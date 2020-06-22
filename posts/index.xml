@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on m1thryn.github.io</title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on m1thryn.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hello World</title>
+      <link>/posts/hello/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/hello/</guid>
+      <description>Hello everyone. Im excited to share that I have finally gotten around to creating a security focused blog site (Name TBD).
+My intent for this is to be an outlet for my research, a place to store my notes, and potentially a place that helps people learn more about various security disciplines.
+Stay Tuned!!! </description>
+    </item>
+    
+  </channel>
+</rss>

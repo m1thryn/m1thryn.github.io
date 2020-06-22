@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on m1thryn.github.io</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on m1thryn.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Blog</title>
+      <link>/tags/blog/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HelloWorld</title>
+      <link>/tags/helloworld/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/helloworld/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>infosec</title>
+      <link>/tags/infosec/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/infosec/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>n00b</title>
+      <link>/tags/n00b/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/n00b/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

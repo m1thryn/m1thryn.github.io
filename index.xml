@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>m1thryn.github.io</title>
+    <link>/</link>
+    <description>Recent content on m1thryn.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Hi there My name is Ian (@m1ithryn). Security analyst, system administrator, and at times, even a developer. I run this blog as an outlet for research, a place to store notes, and a way to learn.
+Interested in offensive security.
+Contact Me:
+ Twitter 🐦 Github 💻 Email 📫  GPG $gpg --fingerprint --list-keys gpg@ianmckay.33mail.com pub rsa4096 2020-06-21 [SC] E08D 4AAE B48D 92CA EF88 C271 4124 4D04 2615 4CFC uid [ultimate] Ian Mckay &amp;lt;gpg@ianmckay.</description>
+    </item>
+    
+    <item>
+      <title>Hello World</title>
+      <link>/posts/hello/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/hello/</guid>
+      <description>Hello everyone. Im excited to share that I have finally gotten around to creating a security focused blog site (Name TBD).
+My intent for this is to be an outlet for my research, a place to store my notes, and potentially a place that helps people learn more about various security disciplines.
+Stay Tuned!!! </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/recommendations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/recommendations/</guid>
+      <description>Recommendations These are some of my favorite books, podcasts, blogs, news sites, and more! This is not a complete list, and will be continually updated.
+ Books  Attacking Network Protocols - James Forshaw Real-World Bug Hunting - Peter Yaworski Hacking Exposed 7 - Stuart McClure / Joel Scambray / George Kurtz Practical Malware Analysis - Michael Sikorski / Andrew Honig Hacking: The Art of Exploitation - Jon Erickson The Hacker Playbook 3 - Peter Kim Hash Crack: Password Cracking Manual (v3) - Joshua Picolet Red Team Field Manual - Ben Clark Crypto 101 - Laurens Van Houtven BulletProof SSL and TLS - Ivan Ristić Windows Internals I - Pavel Yosifovich Windows Internals II - Pavel Yosifovich Black Hat Python - Justin Seitz Black Hat Go - Tom Steele / Chris Patten / Dan Kottmann   Podcasts  Risky Business - Patrick Gray / Adam Boileau Darknet Diaries - Jack Rhysider   Training  Hack The Box OverTheWire Vulnhub PortSwigger WebSecurity Academy DetectionLab JuiceShop   Research Blogs  MalwareUnicorn Azeria Labs ADSecurity Daniel Miessler Schneier On Security   News  Slashdot BleepingComputer US-CERT Hacker News   Conference Talks  Weaponizing Your Pets: The War Kitteh and the Denial of Service Dog - Gene Bransfield HAKC THE POLICE - Bill Swearingen Jackpotting Automated Teller Machines Redux - Barnaby Jack Pwned By The Owner: What Happens When You Steal A Hacker&amp;rsquo;s Computer - Zoz Steal Everything, Kill Everyone, Cause Total Financial Ruin!</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/rtl-sdr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/rtl-sdr/</guid>
+      <description>RTL-SDR This weekend I finally recieved my RTL-SDR USB dongle in the mail. It was recommended to me by a coworker as a great way to break into SDR, without having to pay for something like the HackRF or BladeRF.
+What is RTL-SDR? rtl-sdr.com explains the following:
+ RTL-SDR is a very cheap ~$25 USB dongle that can be used as a computer based radio scanner for receiving live radio signals in your area (no internet required).</description>
+    </item>
+    
+  </channel>
+</rss>
