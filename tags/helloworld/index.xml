@@ -6,11 +6,7 @@
     <description>Recent content in HelloWorld on m1thryn.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 25 Jan 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/helloworld/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 25 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/helloworld/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello World</title>
       <link>/posts/hello/</link>
