@@ -13,10 +13,10 @@
       <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
-      <description>Hi there My name is Ian (@m1ithryn). Security analyst, system administrator, and at times, even a developer. I run this blog as an outlet for research, a place to store notes, and a way to learn.
+      <description>Hi there I&amp;rsquo;m Ian (@m1thryn). Security enthusiast, tinkerer, wanna-be hacker. I run this blog as an outlet for research, a place to store ctf notes, and a way to continue learning.
 Interested in offensive security.
 Contact Me:
- Twitter 🐦 Github 💻 Email 📫  GPG $gpg --fingerprint --list-keys gpg@ianmckay.33mail.com pub rsa4096 2020-06-21 [SC] E08D 4AAE B48D 92CA EF88 C271 4124 4D04 2615 4CFC uid [ultimate] Ian Mckay &amp;lt;gpg@ianmckay.</description>
+ Twitter 🐦 Github 💻 Email 📫  GPG $ gpg --fingerprint --list-keys gpg@ianmckay.33mail.com pub rsa4096 2020-06-21 [SC] E08D 4AAE B48D 92CA EF88 C271 4124 4D04 2615 4CFC uid [ultimate] Ian Mckay &amp;lt;gpg@ianmckay.33mail.com&amp;gt; sub rsa4096 2020-06-21 [E] sub rsa4096 2020-06-21 [S] </description>
     </item>
     
     <item>
