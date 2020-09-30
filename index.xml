@@ -6,7 +6,18 @@
     <description>Recent content on m1thryn.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 25 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hack The Box :: Lame</title>
+      <link>/posts/htb-lame/</link>
+      <pubDate>Tue, 29 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/htb-lame/</guid>
+      <description>TL;DR: this is an easy UNIX box that could possibly be the easiest box on Hack The Box. Do basic enumeration. Type &amp;lt;service&amp;gt; &amp;lt;version&amp;gt; exploit into Google. Profit. Try not to use metasploit&amp;hellip;
+Enumeration  Nmap Starting with an nmap scan&amp;hellip;
+~ » nmap -vv --reason -Pn -A --osscan-guess --version-all -p- 10.10.10.3 Nmap scan report for 10.10.10.3 Host is up, received user-set (0.064s latency). Scanned at 2020-09-29 22:39:43 UTC for 177s Not shown: 65530 filtered ports Reason: 65530 no-responses PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack ttl 62 vsftpd 2.</description>
+    </item>
+    
     <item>
       <title>About</title>
       <link>/about/</link>

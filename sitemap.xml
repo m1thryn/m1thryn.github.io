@@ -3,6 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/posts/htb-lame/</loc>
+    <lastmod>2020-09-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/htb/</loc>
+    <lastmod>2020-09-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-09-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/</loc>
+    <lastmod>2020-09-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/r00ted/</loc>
+    <lastmod>2020-09-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-09-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/about/</loc>
     <lastmod>2020-06-18T00:00:00+00:00</lastmod>
   </url>
@@ -28,22 +58,7 @@
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/n00b/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2019-01-25T00:00:00+00:00</lastmod>
   </url>
   
