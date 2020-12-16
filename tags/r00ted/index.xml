@@ -6,7 +6,18 @@
     <description>Recent content in r00ted on m1thryn.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/r00ted/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/r00ted/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hack The Box :: Buff</title>
+      <link>/posts/htb-buff/</link>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/htb-buff/</guid>
+      <description>TL;DR is Buff is an unconvential Windows box. Not your usual Kerberos, LDAP, SMB, etc. Chisel is much better than plink. Think smarter not harder. Read exploit details carefully
+Enumeration  Nmap Starting with an nmap scan&amp;hellip;
+~ » nmap -vv --reason -Pn -A --osscan-guess --version-all -p- 10.10.10.198 Nmap scan report for 10.10.10.198 Host is up, received user-set (0.13s latency). Scanned at 2020-10-12 22:10:53 UTC for 599s Not shown: 65533 filtered ports Reason: 65533 no-responses PORT STATE SERVICE REASON VERSION 7680/tcp open pando-pub?</description>
+    </item>
+    
     <item>
       <title>Hack The Box :: Lame</title>
       <link>/posts/htb-lame/</link>
