@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/posts/htb-cronos/</loc>
+    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/posts/htb-shocker/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
   </url>

@@ -8,6 +8,18 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/oscp/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Hack The Box :: Cronos</title>
+      <link>/posts/htb-cronos/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/htb-cronos/</guid>
+      <description>TL;DR: A good box. Not too hard, requires thinking, good training.
+Enumeration  Starting with an nmap scan&amp;hellip;
+Nmap Nmap full scan
+# Nmap 7.91 scan initiated Wed Jan 6 23:45:54 2021 as: nmap -vv --reason -Pn -A --osscan-guess --version-all -p- -oN /results/scans/nmap/full_tcp_nmap.txt -oX /results/scans/xml/full_tcp_nmap.xml 10.10.10.13 Nmap scan report for 10.10.10.13 Host is up, received user-set (0.14s latency). Scanned at 2021-01-06 23:45:54 UTC for 240s Not shown: 65532 filtered ports Reason: 65532 no-responses PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack ttl 62 OpenSSH 7.</description>
+    </item>
+    
+    <item>
       <title>Hack The Box :: Shocker</title>
       <link>/posts/htb-shocker/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
