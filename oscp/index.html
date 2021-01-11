@@ -7,7 +7,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="M1thryn&amp;rsquo;s OSCP Cheat Sheet Work in progress!!!! This is a compilation of many public cheat sheets. They are linked at the bottom under the Resources section.
-Table of Contents  Banner Grabbing Port Scanning Service Enumeration  DNS SMB HTTP   Reverse Shells  TTY Upgrade Bash TCP Bash UDP Socat Perl Python PHP Ruby Go Netcat Netcat OpenBSD Ncat OpenSSL Powershell Awk Java C   MSFVenom  Windows Staged Reverse TCP Windows Stageless Reverse TCP Windows Staged Meterpreter Linux Staged Reverse TCP Linux Stageless Reverse TCP Linux Staged Meterpreter Web Payloads   Pivoting  Chisel   Resources  Banner Grabbing /dev/tcp/ip/port or /dev/udp/ip/port" />
+Table of Contents  Banner Grabbing Port Scanning Service Enumeration  DNS SMB RPC HTTP FTP   Reverse Shells  TTY Upgrade Bash TCP Bash UDP Socat Perl Python PHP Ruby Go Netcat Netcat OpenBSD Ncat OpenSSL Powershell Awk Java C   MSFVenom  Windows Staged Reverse TCP Windows Stageless Reverse TCP Windows Staged Meterpreter Linux Staged Reverse TCP Linux Stageless Reverse TCP Linux Staged Meterpreter Web Payloads   Pivoting  Chisel   Resources  Banner Grabbing /dev/tcp/ip/port or /dev/udp/ip/port" />
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <link rel="canonical" href="/oscp/" />
@@ -41,7 +41,7 @@ Table of Contents  Banner Grabbing Port Scanning Service Enumeration  DNS SMB HT
 <meta property="og:type" content="article" />
 <meta property="og:title" content="OSCP :: m1thryn.github.io">
 <meta property="og:description" content="M1thryn&amp;rsquo;s OSCP Cheat Sheet Work in progress!!!! This is a compilation of many public cheat sheets. They are linked at the bottom under the Resources section.
-Table of Contents  Banner Grabbing Port Scanning Service Enumeration  DNS SMB HTTP   Reverse Shells  TTY Upgrade Bash TCP Bash UDP Socat Perl Python PHP Ruby Go Netcat Netcat OpenBSD Ncat OpenSSL Powershell Awk Java C   MSFVenom  Windows Staged Reverse TCP Windows Stageless Reverse TCP Windows Staged Meterpreter Linux Staged Reverse TCP Linux Stageless Reverse TCP Linux Staged Meterpreter Web Payloads   Pivoting  Chisel   Resources  Banner Grabbing /dev/tcp/ip/port or /dev/udp/ip/port" />
+Table of Contents  Banner Grabbing Port Scanning Service Enumeration  DNS SMB RPC HTTP FTP   Reverse Shells  TTY Upgrade Bash TCP Bash UDP Socat Perl Python PHP Ruby Go Netcat Netcat OpenBSD Ncat OpenSSL Powershell Awk Java C   MSFVenom  Windows Staged Reverse TCP Windows Stageless Reverse TCP Windows Staged Meterpreter Linux Staged Reverse TCP Linux Stageless Reverse TCP Linux Staged Meterpreter Web Payloads   Pivoting  Chisel   Resources  Banner Grabbing /dev/tcp/ip/port or /dev/udp/ip/port" />
 <meta property="og:url" content="/oscp/" />
 <meta property="og:site_name" content="OSCP" />
 
@@ -168,9 +168,11 @@ Table of Contents  Banner Grabbing Port Scanning Service Enumeration  DNS SMB HT
 <li><a href="#port-scanning">Port Scanning</a></li>
 <li><a href="#service-enumeration">Service Enumeration</a>
 <ul>
-<li><a href="##dns">DNS</a></li>
-<li><a href="##dns">SMB</a></li>
-<li><a href="##dns">HTTP</a></li>
+<li><a href="#dns">DNS</a></li>
+<li><a href="#smb">SMB</a></li>
+<li><a href="#rpc">RPC</a></li>
+<li><a href="#http">HTTP</a></li>
+<li><a href="#ftp">FTP</a></li>
 </ul>
 </li>
 <li><a href="#reverse-shells">Reverse Shells</a>
@@ -236,12 +238,32 @@ for host in {1..255}; do
         (echo &gt; /dev/tcp/&quot;${subnet}.${host}/${port}&quot;) &gt; /dev/null 2&gt;&amp;1 &amp;&amp; echo &quot;Host ${subnet}.${host} has ${port} open&quot; || echo &quot;Host ${subnet}.${host} has ${port} closed&quot;
     done
 done
+</code></pre><p><strong>powershell</strong></p>
+<pre><code>139,445,5985,5986 | % { Test-NetConnection &lt;IP&gt; -Port $_ }
 </code></pre><h2 id="service-enumeration"><strong>Service Enumeration</strong><a href="#service-enumeration" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <h3 id="dns"><strong>DNS</strong><a href="#dns" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p><strong>Zone Transfer</strong></p>
 <pre><code>dig axfr blah.com @ns1.blah.com
+</code></pre><h3 id="smb"><strong>SMB</strong><a href="#smb" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><strong>Nmap</strong></p>
+<pre><code>nmap -sV -p 445 --script=&quot;banner,(nbstat or smb*) and not (brute or broadcast or dos or external or fuzzer)&quot; --script-args=&quot;unsafe=1&quot; -oN &quot;smb_nmap.txt&quot; &lt;IP&gt;
+</code></pre><p><strong>Enum4Linux</strong></p>
+<pre><code>enum4linux -a -M -l -d &lt;IP&gt; 2&gt;&amp;1 | tee &quot;enum4linux.txt&quot;
+</code></pre><p><strong>SMBClient</strong></p>
+<pre><code>smbclient -L\\ -N -I &lt;IP&gt; 2&gt;&amp;1 | tee &quot;smbclient.txt&quot;
+</code></pre><h3 id="rpc"><strong>RPC</strong><a href="#rpc" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><strong>Nmap</strong></p>
+<pre><code>nmap -sV -p 135 --script=&quot;banner,msrpc-enum,rpc-grind,rpcinfo&quot; -oN &quot;rpc_nmap.txt&quot; &lt;IP&gt;
+</code></pre><p><strong>RPCClient</strong></p>
+<pre><code>rpcclient -p 135 -U &quot;&quot; &lt;IP&gt;
 </code></pre><h3 id="http"><strong>HTTP</strong><a href="#http" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<h2 id="reverse-shells"><strong>Reverse Shells</strong><a href="#reverse-shells" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p><strong>Gobuster</strong></p>
+<pre><code>gobuster dir -u {scheme}://{address}:{port}/ -w /usr/share/seclists/Discovery/Web-Content/common.txt -z -k -l -x &quot;txt,html,php,asp,aspx,jsp&quot; -o &quot;gobuster.txt&quot;
+</code></pre><p>Can also use <code>/usr/share/seclists/Discovery/Web-Content/big.txt</code>or <code>/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt</code> for larger brute force.</p>
+<h3 id="ftp"><strong>FTP</strong><a href="#ftp" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><strong>Nmap</strong></p>
+<pre><code>nmap -sV -p 21 --script=&quot;banner,(ftp*) and not (brute or broadcast or dos or external or fuzzer)&quot; -oN &quot;ftp_nmap.txt&quot; &lt;IP&gt;
+</code></pre><h2 id="reverse-shells"><strong>Reverse Shells</strong><a href="#reverse-shells" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <h3 id="tty-upgrade"><strong>TTY Upgrade</strong><a href="#tty-upgrade" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p><strong>Upgrade Basic Shell</strong></p>
 <pre><code>python -c 'import pty;pty.spawn(&quot;/bin/bash&quot;)'

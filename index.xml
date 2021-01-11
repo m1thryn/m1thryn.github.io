@@ -14,7 +14,7 @@
       
       <guid>/oscp/</guid>
       <description>M1thryn&amp;rsquo;s OSCP Cheat Sheet Work in progress!!!! This is a compilation of many public cheat sheets. They are linked at the bottom under the Resources section.
-Table of Contents  Banner Grabbing Port Scanning Service Enumeration  DNS SMB HTTP   Reverse Shells  TTY Upgrade Bash TCP Bash UDP Socat Perl Python PHP Ruby Go Netcat Netcat OpenBSD Ncat OpenSSL Powershell Awk Java C   MSFVenom  Windows Staged Reverse TCP Windows Stageless Reverse TCP Windows Staged Meterpreter Linux Staged Reverse TCP Linux Stageless Reverse TCP Linux Staged Meterpreter Web Payloads   Pivoting  Chisel   Resources  Banner Grabbing /dev/tcp/ip/port or /dev/udp/ip/port</description>
+Table of Contents  Banner Grabbing Port Scanning Service Enumeration  DNS SMB RPC HTTP FTP   Reverse Shells  TTY Upgrade Bash TCP Bash UDP Socat Perl Python PHP Ruby Go Netcat Netcat OpenBSD Ncat OpenSSL Powershell Awk Java C   MSFVenom  Windows Staged Reverse TCP Windows Stageless Reverse TCP Windows Staged Meterpreter Linux Staged Reverse TCP Linux Stageless Reverse TCP Linux Staged Meterpreter Web Payloads   Pivoting  Chisel   Resources  Banner Grabbing /dev/tcp/ip/port or /dev/udp/ip/port</description>
     </item>
     
     <item>
