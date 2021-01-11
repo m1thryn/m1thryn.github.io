@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>OSCP</title>
+      <link>/oscp/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/oscp/</guid>
+      <description>M1thryn&amp;rsquo;s OSCP Cheat Sheet Work in progress!!!! This is a compilation of many public cheat sheets. They are linked at the bottom under the Resources section.
+Table of Contents  Banner Grabbing Port Scanning Service Enumeration  DNS SMB HTTP   Reverse Shells  TTY Upgrade Bash TCP Bash UDP Socat Perl Python PHP Ruby Go Netcat Netcat OpenBSD Ncat OpenSSL Powershell Awk Java C   MSFVenom  Windows Staged Reverse TCP Windows Stageless Reverse TCP Windows Staged Meterpreter Linux Staged Reverse TCP Linux Stageless Reverse TCP Linux Staged Meterpreter Web Payloads   Pivoting  Chisel   Resources  Banner Grabbing /dev/tcp/ip/port or /dev/udp/ip/port</description>
+    </item>
+    
+    <item>
       <title>Hack The Box :: Cronos</title>
       <link>/posts/htb-cronos/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
@@ -64,6 +74,16 @@ Enumeration  Nmap Starting with an nmap scan&amp;hellip;
     </item>
     
     <item>
+      <title>Recommendations</title>
+      <link>/recommendations/</link>
+      <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/recommendations/</guid>
+      <description>Recommendations These are some of my favorite books, podcasts, blogs, news sites, and more! This is not a complete list, and will be continually updated.
+ Books  Attacking Network Protocols - James Forshaw Real-World Bug Hunting - Peter Yaworski Hacking Exposed 7 - Stuart McClure / Joel Scambray / George Kurtz Practical Malware Analysis - Michael Sikorski / Andrew Honig Hacking: The Art of Exploitation - Jon Erickson The Hacker Playbook 3 - Peter Kim Hash Crack: Password Cracking Manual (v3) - Joshua Picolet Red Team Field Manual - Ben Clark Crypto 101 - Laurens Van Houtven BulletProof SSL and TLS - Ivan Ristić Windows Internals I - Pavel Yosifovich Windows Internals II - Pavel Yosifovich Black Hat Python - Justin Seitz Black Hat Go - Tom Steele / Chris Patten / Dan Kottmann   Podcasts  Risky Business - Patrick Gray / Adam Boileau Darknet Diaries - Jack Rhysider   Training  Hack The Box OverTheWire Vulnhub PortSwigger WebSecurity Academy DetectionLab JuiceShop   Research Blogs  MalwareUnicorn Azeria Labs ADSecurity Daniel Miessler Schneier On Security   News  Slashdot BleepingComputer US-CERT Hacker News   Conference Talks  Weaponizing Your Pets: The War Kitteh and the Denial of Service Dog - Gene Bransfield HAKC THE POLICE - Bill Swearingen Jackpotting Automated Teller Machines Redux - Barnaby Jack Pwned By The Owner: What Happens When You Steal A Hacker&amp;rsquo;s Computer - Zoz Steal Everything, Kill Everyone, Cause Total Financial Ruin!</description>
+    </item>
+    
+    <item>
       <title>About</title>
       <link>/about/</link>
       <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
@@ -84,16 +104,6 @@ Contact Me:
       <description>Hello everyone. Im excited to share that I have finally gotten around to creating a security focused blog site (Name TBD).
 My intent for this is to be an outlet for my research, a place to store my notes, and potentially a place that helps people learn more about various security disciplines.
 Stay Tuned!!! </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/recommendations/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/recommendations/</guid>
-      <description>Recommendations These are some of my favorite books, podcasts, blogs, news sites, and more! This is not a complete list, and will be continually updated.
- Books  Attacking Network Protocols - James Forshaw Real-World Bug Hunting - Peter Yaworski Hacking Exposed 7 - Stuart McClure / Joel Scambray / George Kurtz Practical Malware Analysis - Michael Sikorski / Andrew Honig Hacking: The Art of Exploitation - Jon Erickson The Hacker Playbook 3 - Peter Kim Hash Crack: Password Cracking Manual (v3) - Joshua Picolet Red Team Field Manual - Ben Clark Crypto 101 - Laurens Van Houtven BulletProof SSL and TLS - Ivan Ristić Windows Internals I - Pavel Yosifovich Windows Internals II - Pavel Yosifovich Black Hat Python - Justin Seitz Black Hat Go - Tom Steele / Chris Patten / Dan Kottmann   Podcasts  Risky Business - Patrick Gray / Adam Boileau Darknet Diaries - Jack Rhysider   Training  Hack The Box OverTheWire Vulnhub PortSwigger WebSecurity Academy DetectionLab JuiceShop   Research Blogs  MalwareUnicorn Azeria Labs ADSecurity Daniel Miessler Schneier On Security   News  Slashdot BleepingComputer US-CERT Hacker News   Conference Talks  Weaponizing Your Pets: The War Kitteh and the Denial of Service Dog - Gene Bransfield HAKC THE POLICE - Bill Swearingen Jackpotting Automated Teller Machines Redux - Barnaby Jack Pwned By The Owner: What Happens When You Steal A Hacker&amp;rsquo;s Computer - Zoz Steal Everything, Kill Everyone, Cause Total Financial Ruin!</description>
     </item>
     
     <item>
