@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maldocs</title>
+    <link>http://localhost/Hack-The-Box/</link>
+    <description>Recent content on Maldocs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost/Hack-The-Box/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cronos</title>
+      <link>http://localhost/Hack-The-Box/htb-cronos/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost/Hack-The-Box/htb-cronos/</guid>
+      <description>This is a good box. Not too hard, requires thinking, good training.
+Enumeration     Starting with an nmap scan&amp;hellip;
+Nmap    Nmap full scan
+# Nmap 7.91 scan initiated Wed Jan 6 23:45:54 2021 as: nmap -vv --reason -Pn -A --osscan-guess --version-all -p- -oN /results/scans/nmap/full_tcp_nmap.txt -oX /results/scans/xml/full_tcp_nmap.xml 10.10.10.13 Nmap scan report for 10.10.10.13 Host is up, received user-set (0.14s latency). Scanned at 2021-01-06 23:45:54 UTC for 240s Not shown: 65532 filtered ports Reason: 65532 no-responses PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack ttl 62 OpenSSH 7.</description>
+    </item>
+    
+    <item>
+      <title>Shocker</title>
+      <link>http://localhost/Hack-The-Box/htb-shocker/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost/Hack-The-Box/htb-shocker/</guid>
+      <description>Shellshock&amp;hellip;duh.
+Enumeration     Starting with an nmap scan&amp;hellip;
+Nmap    # Nmap 7.91 scan initiated Tue Jan 5 00:08:34 2021 as: nmap -vv --reason -Pn -A --osscan-guess --version-all -p- -oN /results/scans/nmap/full_tcp_nmap.txt -oX /results/scans/xml/full_tcp_nmap.xml 10.10.10.56 adjust_timeouts2: packet supposedly had rtt of -118931 microseconds. Ignoring time. adjust_timeouts2: packet supposedly had rtt of -118931 microseconds. Ignoring time. adjust_timeouts2: packet supposedly had rtt of -144905 microseconds. Ignoring time. adjust_timeouts2: packet supposedly had rtt of -144905 microseconds.</description>
+    </item>
+    
+    <item>
+      <title>Legacy</title>
+      <link>http://localhost/Hack-The-Box/htb-legacy/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost/Hack-The-Box/htb-legacy/</guid>
+      <description>EternalBlue. Classic.
+Enumeration     Starting with an nmap scan&amp;hellip;
+Nmap    # Nmap 7.91 scan initiated Sat Jan 2 01:42:31 2021 as: nmap -vv --reason -Pn -A --osscan-guess --version-all -p- -oN /results/scans/nmap/full_tcp_nmap.txt -oX /results/scans/xml/full_tcp_nmap.xml 10.10.10.4 Nmap scan report for 10.10.10.4 Host is up, received user-set (0.14s latency). Scanned at 2021-01-02 01:42:31 UTC for 331s Not shown: 65532 filtered ports Reason: 65532 no-responses PORT STATE SERVICE REASON VERSION 139/tcp open netbios-ssn syn-ack ttl 126 Microsoft Windows netbios-ssn 445/tcp open microsoft-ds syn-ack ttl 126 Windows XP microsoft-ds 3389/tcp closed ms-wbt-server reset ttl 126 Device type: general purpose|specialized|media device Running (JUST GUESSING): Microsoft Windows 2000|XP|2003|2008|PocketPC/CE (93%), General Dynamics embedded (85%), Cisco embedded (85%), Motorola embedded (85%) OS CPE: cpe:/o:microsoft:windows_2000::sp4 cpe:/o:microsoft:windows_xp::sp3 cpe:/o:microsoft:windows_server_2003::sp2 cpe:/o:microsoft:windows_server_2008::sp2 cpe:/h:cisco:isb7150 cpe:/o:microsoft:windows_ce:5.</description>
+    </item>
+    
+    <item>
+      <title>Buff</title>
+      <link>http://localhost/Hack-The-Box/htb-buff/</link>
+      <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost/Hack-The-Box/htb-buff/</guid>
+      <description>Buff is an unconvential Windows box. Not your usual Kerberos, LDAP, SMB, etc. Chisel is much better than plink. Think smarter not harder. Read exploit details carefully
+Enumeration     Nmap    Starting with an nmap scan&amp;hellip;
+~ » nmap -vv --reason -Pn -A --osscan-guess --version-all -p- 10.10.10.198 Nmap scan report for 10.10.10.198 Host is up, received user-set (0.13s latency). Scanned at 2020-10-12 22:10:53 UTC for 599s Not shown: 65533 filtered ports Reason: 65533 no-responses PORT STATE SERVICE REASON VERSION 7680/tcp open pando-pub?</description>
+    </item>
+    
+    <item>
+      <title>Lame</title>
+      <link>http://localhost/Hack-The-Box/htb-lame/</link>
+      <pubDate>Tue, 29 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost/Hack-The-Box/htb-lame/</guid>
+      <description>This is an easy UNIX box that could possibly be the easiest box on Hack The Box. Do basic enumeration. Type &amp;lt;service&amp;gt; &amp;lt;version&amp;gt; exploit into Google. Profit. Try not to use metasploit&amp;hellip;
+Enumeration     Nmap    Starting with an nmap scan&amp;hellip;
+~ » nmap -vv --reason -Pn -A --osscan-guess --version-all -p- 10.10.10.3 Nmap scan report for 10.10.10.3 Host is up, received user-set (0.064s latency). Scanned at 2020-09-29 22:39:43 UTC for 177s Not shown: 65530 filtered ports Reason: 65530 no-responses PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack ttl 62 vsftpd 2.</description>
+    </item>
+    
+  </channel>
+</rss>

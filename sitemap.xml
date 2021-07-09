@@ -1,109 +1,58 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
-    <loc>/oscp/</loc>
-    <lastmod>2021-01-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/htb-cronos/</loc>
+    <loc>http://localhost/Offensive-Security/Initial-Access/</loc>
+  </url><url>
+    <loc>http://localhost/Offensive-Security/Code-Execution/</loc>
+  </url><url>
+    <loc>http://localhost/Offensive-Security/Persistence/</loc>
+  </url><url>
+    <loc>http://localhost/Offensive-Security/Privilege-Escalation/</loc>
+  </url><url>
+    <loc>http://localhost/Offensive-Security/Credential-Access/</loc>
+  </url><url>
+    <loc>http://localhost/Offensive-Security/Discovery/</loc>
+  </url><url>
+    <loc>http://localhost/Offensive-Security/Lateral-Movement/</loc>
+  </url><url>
+    <loc>http://localhost/Offensive-Security/Command-and-Control/</loc>
+  </url><url>
+    <loc>http://localhost/Offensive-Security/Impact/</loc>
+  </url><url>
+    <loc>http://localhost/Hack-The-Box/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/htb-shocker/</loc>
+  </url><url>
+    <loc>http://localhost/Hack-The-Box/htb-cronos/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/htb/</loc>
+  </url><url>
+    <loc>http://localhost/Hack-The-Box/htb-shocker/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
+  </url><url>
+    <loc>http://localhost/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/oscp/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/r00ted/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/htb-legacy/</loc>
+  </url><url>
+    <loc>http://localhost/Hack-The-Box/htb-legacy/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/htb-buff/</loc>
+  </url><url>
+    <loc>http://localhost/Hack-The-Box/htb-buff/</loc>
     <lastmod>2020-10-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/htb-lame/</loc>
+  </url><url>
+    <loc>http://localhost/Hack-The-Box/htb-lame/</loc>
     <lastmod>2020-09-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/recommendations/</loc>
+  </url><url>
+    <loc>http://localhost/recommendations/</loc>
     <lastmod>2020-06-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/about/</loc>
+  </url><url>
+    <loc>http://localhost/about/</loc>
     <lastmod>2020-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost/Offensive-Security/</loc>
+  </url><url>
+    <loc>http://localhost/Reversing/</loc>
+  </url><url>
+    <loc>http://localhost/categories/</loc>
+  </url><url>
+    <loc>http://localhost/tags/</loc>
   </url>
-  
-  <url>
-    <loc>/tags/blog/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/hello/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/helloworld/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/infosec/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/n00b/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/rtl-sdr/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
-  </url>
-  
 </urlset>

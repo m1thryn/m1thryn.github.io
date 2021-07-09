@@ -1,120 +1,87 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>m1thryn.github.io</title>
-    <link>/</link>
-    <description>Recent content on m1thryn.github.io</description>
+    <title>Welcome to maldocs on Maldocs</title>
+    <link>http://localhost/</link>
+    <description>Recent content in Welcome to maldocs on Maldocs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>OSCP</title>
-      <link>/oscp/</link>
-      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/oscp/</guid>
-      <description>M1thryn&amp;rsquo;s OSCP Cheat Sheet Work in progress!!!! This is a compilation of many public cheat sheets. They are linked at the bottom under the Resources section.
-Table of Contents  Banner Grabbing Port Scanning Service Enumeration  DNS SMB RPC HTTP FTP   Reverse Shells  TTY Upgrade Bash TCP Bash UDP Socat Perl Python PHP Ruby Go Netcat Netcat OpenBSD Ncat OpenSSL Powershell Awk Java C   MSFVenom  Windows Staged Reverse TCP Windows Stageless Reverse TCP Windows Staged Meterpreter Linux Staged Reverse TCP Linux Stageless Reverse TCP Linux Staged Meterpreter Web Payloads   Pivoting  Chisel   Resources  Banner Grabbing /dev/tcp/ip/port or /dev/udp/ip/port</description>
-    </item>
-    
-    <item>
-      <title>Hack The Box :: Cronos</title>
-      <link>/posts/htb-cronos/</link>
+      <title>Cronos</title>
+      <link>http://localhost/Hack-The-Box/htb-cronos/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>/posts/htb-cronos/</guid>
-      <description>TL;DR: A good box. Not too hard, requires thinking, good training.
-Enumeration  Starting with an nmap scan&amp;hellip;
-Nmap Nmap full scan
+      <guid>http://localhost/Hack-The-Box/htb-cronos/</guid>
+      <description>This is a good box. Not too hard, requires thinking, good training.
+Enumeration     Starting with an nmap scan&amp;hellip;
+Nmap    Nmap full scan
 # Nmap 7.91 scan initiated Wed Jan 6 23:45:54 2021 as: nmap -vv --reason -Pn -A --osscan-guess --version-all -p- -oN /results/scans/nmap/full_tcp_nmap.txt -oX /results/scans/xml/full_tcp_nmap.xml 10.10.10.13 Nmap scan report for 10.10.10.13 Host is up, received user-set (0.14s latency). Scanned at 2021-01-06 23:45:54 UTC for 240s Not shown: 65532 filtered ports Reason: 65532 no-responses PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack ttl 62 OpenSSH 7.</description>
     </item>
     
     <item>
-      <title>Hack The Box :: Shocker</title>
-      <link>/posts/htb-shocker/</link>
+      <title>Shocker</title>
+      <link>http://localhost/Hack-The-Box/htb-shocker/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>/posts/htb-shocker/</guid>
-      <description>TL;DR: Shellshock&amp;hellip;duh.
-Enumeration  Starting with an nmap scan&amp;hellip;
-Nmap # Nmap 7.91 scan initiated Tue Jan 5 00:08:34 2021 as: nmap -vv --reason -Pn -A --osscan-guess --version-all -p- -oN /results/scans/nmap/full_tcp_nmap.txt -oX /results/scans/xml/full_tcp_nmap.xml 10.10.10.56 adjust_timeouts2: packet supposedly had rtt of -118931 microseconds. Ignoring time. adjust_timeouts2: packet supposedly had rtt of -118931 microseconds. Ignoring time. adjust_timeouts2: packet supposedly had rtt of -144905 microseconds. Ignoring time. adjust_timeouts2: packet supposedly had rtt of -144905 microseconds.</description>
+      <guid>http://localhost/Hack-The-Box/htb-shocker/</guid>
+      <description>Shellshock&amp;hellip;duh.
+Enumeration     Starting with an nmap scan&amp;hellip;
+Nmap    # Nmap 7.91 scan initiated Tue Jan 5 00:08:34 2021 as: nmap -vv --reason -Pn -A --osscan-guess --version-all -p- -oN /results/scans/nmap/full_tcp_nmap.txt -oX /results/scans/xml/full_tcp_nmap.xml 10.10.10.56 adjust_timeouts2: packet supposedly had rtt of -118931 microseconds. Ignoring time. adjust_timeouts2: packet supposedly had rtt of -118931 microseconds. Ignoring time. adjust_timeouts2: packet supposedly had rtt of -144905 microseconds. Ignoring time. adjust_timeouts2: packet supposedly had rtt of -144905 microseconds.</description>
     </item>
     
     <item>
-      <title>Hack The Box :: Legacy</title>
-      <link>/posts/htb-legacy/</link>
+      <title>Legacy</title>
+      <link>http://localhost/Hack-The-Box/htb-legacy/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>/posts/htb-legacy/</guid>
-      <description>TL;DR: EternalBlue
-Enumeration  Starting with an nmap scan&amp;hellip;
-Nmap # Nmap 7.91 scan initiated Sat Jan 2 01:42:31 2021 as: nmap -vv --reason -Pn -A --osscan-guess --version-all -p- -oN /results/scans/nmap/full_tcp_nmap.txt -oX /results/scans/xml/full_tcp_nmap.xml 10.10.10.4 Nmap scan report for 10.10.10.4 Host is up, received user-set (0.14s latency). Scanned at 2021-01-02 01:42:31 UTC for 331s Not shown: 65532 filtered ports Reason: 65532 no-responses PORT STATE SERVICE REASON VERSION 139/tcp open netbios-ssn syn-ack ttl 126 Microsoft Windows netbios-ssn 445/tcp open microsoft-ds syn-ack ttl 126 Windows XP microsoft-ds 3389/tcp closed ms-wbt-server reset ttl 126 Device type: general purpose|specialized|media device Running (JUST GUESSING): Microsoft Windows 2000|XP|2003|2008|PocketPC/CE (93%), General Dynamics embedded (85%), Cisco embedded (85%), Motorola embedded (85%) OS CPE: cpe:/o:microsoft:windows_2000::sp4 cpe:/o:microsoft:windows_xp::sp3 cpe:/o:microsoft:windows_server_2003::sp2 cpe:/o:microsoft:windows_server_2008::sp2 cpe:/h:cisco:isb7150 cpe:/o:microsoft:windows_ce:5.</description>
+      <guid>http://localhost/Hack-The-Box/htb-legacy/</guid>
+      <description>EternalBlue. Classic.
+Enumeration     Starting with an nmap scan&amp;hellip;
+Nmap    # Nmap 7.91 scan initiated Sat Jan 2 01:42:31 2021 as: nmap -vv --reason -Pn -A --osscan-guess --version-all -p- -oN /results/scans/nmap/full_tcp_nmap.txt -oX /results/scans/xml/full_tcp_nmap.xml 10.10.10.4 Nmap scan report for 10.10.10.4 Host is up, received user-set (0.14s latency). Scanned at 2021-01-02 01:42:31 UTC for 331s Not shown: 65532 filtered ports Reason: 65532 no-responses PORT STATE SERVICE REASON VERSION 139/tcp open netbios-ssn syn-ack ttl 126 Microsoft Windows netbios-ssn 445/tcp open microsoft-ds syn-ack ttl 126 Windows XP microsoft-ds 3389/tcp closed ms-wbt-server reset ttl 126 Device type: general purpose|specialized|media device Running (JUST GUESSING): Microsoft Windows 2000|XP|2003|2008|PocketPC/CE (93%), General Dynamics embedded (85%), Cisco embedded (85%), Motorola embedded (85%) OS CPE: cpe:/o:microsoft:windows_2000::sp4 cpe:/o:microsoft:windows_xp::sp3 cpe:/o:microsoft:windows_server_2003::sp2 cpe:/o:microsoft:windows_server_2008::sp2 cpe:/h:cisco:isb7150 cpe:/o:microsoft:windows_ce:5.</description>
     </item>
     
     <item>
-      <title>Hack The Box :: Buff</title>
-      <link>/posts/htb-buff/</link>
+      <title>Buff</title>
+      <link>http://localhost/Hack-The-Box/htb-buff/</link>
       <pubDate>Mon, 12 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>/posts/htb-buff/</guid>
-      <description>TL;DR is Buff is an unconvential Windows box. Not your usual Kerberos, LDAP, SMB, etc. Chisel is much better than plink. Think smarter not harder. Read exploit details carefully
-Enumeration  Nmap Starting with an nmap scan&amp;hellip;
+      <guid>http://localhost/Hack-The-Box/htb-buff/</guid>
+      <description>Buff is an unconvential Windows box. Not your usual Kerberos, LDAP, SMB, etc. Chisel is much better than plink. Think smarter not harder. Read exploit details carefully
+Enumeration     Nmap    Starting with an nmap scan&amp;hellip;
 ~ » nmap -vv --reason -Pn -A --osscan-guess --version-all -p- 10.10.10.198 Nmap scan report for 10.10.10.198 Host is up, received user-set (0.13s latency). Scanned at 2020-10-12 22:10:53 UTC for 599s Not shown: 65533 filtered ports Reason: 65533 no-responses PORT STATE SERVICE REASON VERSION 7680/tcp open pando-pub?</description>
     </item>
     
     <item>
-      <title>Hack The Box :: Lame</title>
-      <link>/posts/htb-lame/</link>
+      <title>Lame</title>
+      <link>http://localhost/Hack-The-Box/htb-lame/</link>
       <pubDate>Tue, 29 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/posts/htb-lame/</guid>
-      <description>TL;DR: this is an easy UNIX box that could possibly be the easiest box on Hack The Box. Do basic enumeration. Type &amp;lt;service&amp;gt; &amp;lt;version&amp;gt; exploit into Google. Profit. Try not to use metasploit&amp;hellip;
-Enumeration  Nmap Starting with an nmap scan&amp;hellip;
+      <guid>http://localhost/Hack-The-Box/htb-lame/</guid>
+      <description>This is an easy UNIX box that could possibly be the easiest box on Hack The Box. Do basic enumeration. Type &amp;lt;service&amp;gt; &amp;lt;version&amp;gt; exploit into Google. Profit. Try not to use metasploit&amp;hellip;
+Enumeration     Nmap    Starting with an nmap scan&amp;hellip;
 ~ » nmap -vv --reason -Pn -A --osscan-guess --version-all -p- 10.10.10.3 Nmap scan report for 10.10.10.3 Host is up, received user-set (0.064s latency). Scanned at 2020-09-29 22:39:43 UTC for 177s Not shown: 65530 filtered ports Reason: 65530 no-responses PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack ttl 62 vsftpd 2.</description>
     </item>
     
     <item>
       <title>Recommendations</title>
-      <link>/recommendations/</link>
+      <link>http://localhost/recommendations/</link>
       <pubDate>Sun, 28 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/recommendations/</guid>
-      <description>Recommendations These are some of my favorite books, podcasts, blogs, news sites, and more! This is not a complete list, and will be continually updated.
- Books  Attacking Network Protocols - James Forshaw Real-World Bug Hunting - Peter Yaworski Hacking Exposed 7 - Stuart McClure / Joel Scambray / George Kurtz Practical Malware Analysis - Michael Sikorski / Andrew Honig Hacking: The Art of Exploitation - Jon Erickson The Hacker Playbook 3 - Peter Kim Hash Crack: Password Cracking Manual (v3) - Joshua Picolet Red Team Field Manual - Ben Clark Crypto 101 - Laurens Van Houtven BulletProof SSL and TLS - Ivan Ristić Windows Internals I - Pavel Yosifovich Windows Internals II - Pavel Yosifovich Black Hat Python - Justin Seitz Black Hat Go - Tom Steele / Chris Patten / Dan Kottmann   Podcasts  Risky Business - Patrick Gray / Adam Boileau Darknet Diaries - Jack Rhysider   Training  Hack The Box OverTheWire Vulnhub PortSwigger WebSecurity Academy DetectionLab JuiceShop   Research Blogs  MalwareUnicorn Azeria Labs ADSecurity Daniel Miessler Schneier On Security   News  Slashdot BleepingComputer US-CERT Hacker News   Conference Talks  Weaponizing Your Pets: The War Kitteh and the Denial of Service Dog - Gene Bransfield HAKC THE POLICE - Bill Swearingen Jackpotting Automated Teller Machines Redux - Barnaby Jack Pwned By The Owner: What Happens When You Steal A Hacker&amp;rsquo;s Computer - Zoz Steal Everything, Kill Everyone, Cause Total Financial Ruin!</description>
+      <guid>http://localhost/recommendations/</guid>
+      <description>These are some of my favorite books, podcasts, blogs, news sites, and more! This is not a complete list, and will be continually updated.
+ Books     Attacking Network Protocols - James Forshaw Real-World Bug Hunting - Peter Yaworski Hacking Exposed 7 - Stuart McClure / Joel Scambray / George Kurtz Practical Malware Analysis - Michael Sikorski / Andrew Honig Hacking: The Art of Exploitation - Jon Erickson The Hacker Playbook 3 - Peter Kim Hash Crack: Password Cracking Manual (v3) - Joshua Picolet Red Team Field Manual - Ben Clark Crypto 101 - Laurens Van Houtven BulletProof SSL and TLS - Ivan Ristić Windows Internals I - Pavel Yosifovich Windows Internals II - Pavel Yosifovich Black Hat Python - Justin Seitz Black Hat Go - Tom Steele / Chris Patten / Dan Kottmann   Podcasts     Risky Business - Patrick Gray / Adam Boileau Darknet Diaries - Jack Rhysider   Training     Hack The Box OverTheWire Vulnhub PortSwigger WebSecurity Academy DetectionLab JuiceShop   Research Blogs     MalwareUnicorn Azeria Labs ADSecurity Daniel Miessler Schneier On Security   News     Slashdot BleepingComputer US-CERT Hacker News   Conference Talks     Weaponizing Your Pets: The War Kitteh and the Denial of Service Dog - Gene Bransfield HAKC THE POLICE - Bill Swearingen Jackpotting Automated Teller Machines Redux - Barnaby Jack Pwned By The Owner: What Happens When You Steal A Hacker&amp;rsquo;s Computer - Zoz Steal Everything, Kill Everyone, Cause Total Financial Ruin!</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>/about/</link>
+      <link>http://localhost/about/</link>
       <pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/about/</guid>
-      <description>Hi there I&amp;rsquo;m Ian (@m1thryn). Security enthusiast, tinkerer, wanna-be hacker. I run this blog as an outlet for research, a place to store ctf notes, and a way to continue learning.
+      <guid>http://localhost/about/</guid>
+      <description>Hi there    I&amp;rsquo;m Ian (@m1thryn). Security enthusiast, tinkerer, wanna-be hacker. I run this blog as an outlet for research, a place to store ctf notes, and a way to continue learning.
 Interested in offensive security.
 Contact Me:
- Twitter 🐦 Github 💻 Email 📫  GPG $ gpg --fingerprint --list-keys gpg@ianmckay.33mail.com pub rsa4096 2020-06-21 [SC] E08D 4AAE B48D 92CA EF88 C271 4124 4D04 2615 4CFC uid [ultimate] Ian Mckay &amp;lt;gpg@ianmckay.33mail.com&amp;gt; sub rsa4096 2020-06-21 [E] sub rsa4096 2020-06-21 [S] </description>
-    </item>
-    
-    <item>
-      <title>Hello World</title>
-      <link>/posts/hello/</link>
-      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/hello/</guid>
-      <description>Hello everyone. Im excited to share that I have finally gotten around to creating a security focused blog site (Name TBD).
-My intent for this is to be an outlet for my research, a place to store my notes, and potentially a place that helps people learn more about various security disciplines.
-Stay Tuned!!! </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/rtl-sdr/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/rtl-sdr/</guid>
-      <description>RTL-SDR This weekend I finally recieved my RTL-SDR USB dongle in the mail. It was recommended to me by a coworker as a great way to break into SDR, without having to pay for something like the HackRF or BladeRF.
-What is RTL-SDR? rtl-sdr.com explains the following:
- RTL-SDR is a very cheap ~$25 USB dongle that can be used as a computer based radio scanner for receiving live radio signals in your area (no internet required).</description>
+ Twitter  Github  Email   GPG    $ gpg --fingerprint --list-keys gpg@ianmckay.33mail.com pub rsa4096 2020-06-21 [SC] E08D 4AAE B48D 92CA EF88 C271 4124 4D04 2615 4CFC uid [ultimate] Ian Mckay &amp;lt;gpg@ianmckay.</description>
     </item>
     
   </channel>

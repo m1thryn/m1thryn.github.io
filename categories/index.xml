@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on m1thryn.github.io</title>
-    <link>/categories/</link>
-    <description>Recent content in Categories on m1thryn.github.io</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <title>Categories on Maldocs</title>
+    <link>http://localhost/categories/</link>
+    <description>Recent content in Categories on Maldocs</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="http://localhost/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
