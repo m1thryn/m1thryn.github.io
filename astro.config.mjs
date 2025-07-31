@@ -14,7 +14,7 @@ import defaultTheme from "tailwindcss/defaultTheme";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://drew.silcock.dev",
+  site: "https://m1thryn.github.io",
   // The order of integrations is important here.
   integrations: [
     tailwind(),

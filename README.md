@@ -1,14 +1,15 @@
-# Drew's Dev Blog
+# m1thryn's Blog
 
-This is the code for my dev blog.
-
-It's based on [Astro Micro](https://astro.build/themes/details/astro-micro/) with some modifications to the styling, plugins, etc.
+This blog is based on [Drew's Dev Blog](https://github.com/drewsilcock/silcock-dev) and [Astro Micro](https://astro.build/themes/details/astro-micro/) with some modifications to the styling, plugins, etc.
 
 ## Getting started
 
-Install the latest Node LTS (e.g. via nvm). Then:
+Open the project in a devcontainer. Then:
 
 ```shell
+# To download dependencies
+pnpm install
+
 # To run dev environment
 pnpm dev
 

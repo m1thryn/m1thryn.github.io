@@ -17,11 +17,7 @@ const { title, description, route } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-    <Head
-      title={`${title} | ${SITE.TITLE}`}
-      description={description}
-      imageUrl={`/open-graph/${route}.png`}
-    />
+    <Head title={`${title} | ${SITE.TITLE}`} description={description} />
   </head>
   <body>
     <Header />
