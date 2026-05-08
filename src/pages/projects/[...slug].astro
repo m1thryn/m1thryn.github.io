@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
@@ -13,13 +13,13 @@ export async function getStaticPaths() {
     .filter(shouldRenderPage)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   return projects.map((project) => ({
-    params: { slug: project.slug },
+    params: { slug: project.id },
     props: project,
   }));
 }
 
 const project = Astro.props;
-const { Content, headings } = await project.render();
+const { Content, headings } = await render(project);
 const links = [
   project.data.demoURL && {
     href: project.data.demoURL,
@@ -42,7 +42,7 @@ const socials = project.data.socials ?? [];
 <Layout
   title={project.data.title}
   description={project.data.description}
-  route={`${project.collection}/${project.slug}`}
+  route={`${project.collection}/${project.id}`}
 >
   <Container>
     <div class="animate">
@@ -55,7 +55,7 @@ const socials = project.data.socials ?? [];
         </div>
         &bull;
         <div class="font-base text-sm">
-          {readingTime(project.body)}
+          {readingTime(project.body ?? "")}
         </div>
       </div>
       <h1 class="text-3xl font-semibold text-black dark:text-white">

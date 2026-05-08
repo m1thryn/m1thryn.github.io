@@ -287,20 +287,6 @@ const { title, description, imageUrl } = Astro.props;
   const baseXorDecodeKey = 103;
 
   /**
-   * Convert numeric character code to hexadecimal string.
-   * @param {number} charCode Numeric representation of a character.
-   */
-  function charCodeToHex(charCode) {
-    let hex = charCode.toString(16);
-
-    if (charCode < 16) {
-      hex = "0" + hex;
-    }
-
-    return hex;
-  }
-
-  /**
    * Convert hexadecimal string to numeric character code.
    * @param {string} hex
    */
