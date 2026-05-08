@@ -17,7 +17,6 @@ import { SITE } from "@consts";
               class="underline decoration-blue-500 decoration-4 underline-offset-4 group-hover:decoration-[6px]"
             >
               {SITE.TITLE}
-              <i class="nf nf-custom-folder"></i>
             </span>
           </div>
         </Link>
@@ -163,6 +162,7 @@ import { SITE } from "@consts";
         return;
       }
 
+      if (!(event.target instanceof Node)) return;
       if (!navHeader.contains(event.target)) {
         toggleMenu();
       }

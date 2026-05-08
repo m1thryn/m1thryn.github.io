@@ -20,6 +20,8 @@ const { title, description, imageUrl } = Astro.props;
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
+<meta http-equiv="X-Frame-Options" content="DENY" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
 <!-- Canonical URL -->
@@ -79,7 +81,10 @@ const { title, description, imageUrl } = Astro.props;
   crossorigin="anonymous"
 />
 
-<link rel="style" href="https://www.nerdfonts.com/assets/css/webfont.css" />
+<link
+  rel="stylesheet"
+  href="https://www.nerdfonts.com/assets/css/webfont.css"
+/>
 
 <ClientRouter />
 
@@ -320,25 +325,6 @@ const { title, description, imageUrl } = Astro.props;
 
     return decoded;
   }
-
-  /**
-   * This function encodes an email address using a simple XOR cipher. It's not needed
-   * for the site's runtime, but it's useful to generate the encoded emails to put into
-   * the site.
-   * @param {string} textToEncode Email address to xor encode.
-   */
-  window.xorEncode = function (textToEncode) {
-    let encoded = "";
-
-    for (let i = 0; i < textToEncode.length; i++) {
-      const decodeKey = (baseXorDecodeKey + i) % 255;
-      const charCode = textToEncode.charCodeAt(i);
-      const encodedCharCode = charCode ^ decodeKey;
-      encoded += charCodeToHex(encodedCharCode);
-    }
-
-    return encoded;
-  };
 
   const decodeEmails = () => {
     const emailElements = document.querySelectorAll(".email");

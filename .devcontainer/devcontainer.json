@@ -14,19 +14,16 @@
   "features": {
     "ghcr.io/devcontainers-extra/features/pnpm:2": {}
   },
-  
+
   "customizations": {
     "vscode": {
-      "extensions": [
-        "dbaeumer.vscode-eslint",
-        "astro-build.astro-vscode"
-      ]
+      "extensions": ["dbaeumer.vscode-eslint", "astro-build.astro-vscode"]
     }
   },
 
   "remoteEnv": {
     "ASTRO_TELEMETRY_DISABLED": "1"
-}
+  }
 
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": ""

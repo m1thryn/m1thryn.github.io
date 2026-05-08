@@ -78,9 +78,7 @@ article {
 
 .section-anchor-link {
   /* yellow-500 = hsl(45, 93%, 47%) */
-  @apply absolute ml-[-1.5rem] items-center justify-center
-         font-bold text-[color:hsl(45,25%,55%)] decoration-transparent
-         opacity-25 transition-all hover:text-yellow-500 hover:opacity-100 hover:dark:text-yellow-500;
+  @apply absolute ml-[-1.5rem] items-center justify-center font-bold text-[color:hsl(45,25%,55%)] decoration-transparent opacity-25 transition-all hover:text-yellow-500 hover:opacity-100 hover:dark:text-yellow-500;
 }
 
 .section-anchor-link::after {
