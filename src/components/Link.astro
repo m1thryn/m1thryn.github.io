@@ -25,9 +25,9 @@ const {
   href={href}
   target={external ? "_blank" : "_self"}
   class={cn(
-    "inline-block text-current hover:text-black focus-visible:text-black dark:hover:text-white dark:focus-visible:text-white",
+    "inline-block text-current hover:text-tn-day-text focus-visible:text-tn-day-text dark:hover:text-tn-text dark:focus-visible:text-tn-text",
     underline &&
-      "underline decoration-blue-500 underline-offset-[3px] decoration-1 hover:decoration-2",
+      "underline decoration-tn-day-blue dark:decoration-tn-blue underline-offset-[3px] decoration-1 hover:decoration-2",
     group && "group",
     Boolean(className) && className,
   )}

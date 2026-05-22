@@ -28,13 +28,13 @@ body {
 body {
   @apply font-sans antialiased;
   @apply flex flex-col;
-  @apply bg-neutral-100 dark:bg-neutral-800;
-  @apply text-black/75 dark:text-white/75;
+  @apply bg-tn-day-bg dark:bg-tn-bg;
+  @apply text-tn-day-text dark:text-tn-text;
 }
 
 header {
   @apply fixed left-0 right-0 top-0 z-50 py-6;
-  @apply bg-neutral-100/75 dark:bg-neutral-900/75;
+  @apply bg-tn-day-bg/80 dark:bg-tn-bg-dark/85;
   @apply saturate-200 backdrop-blur-sm;
 }
 
@@ -49,16 +49,16 @@ footer {
 article {
   @apply prose prose-neutral max-w-full dark:prose-invert prose-img:mx-auto prose-img:my-auto;
   @apply prose-headings:font-semibold;
-  @apply prose-headings:text-black prose-headings:dark:text-white;
+  @apply prose-headings:text-tn-day-text prose-headings:dark:text-tn-text;
 }
 
 @layer utilities {
   article a {
     @apply font-sans text-current underline underline-offset-[3px];
-    @apply decoration-yellow-500;
+    @apply decoration-tn-day-blue dark:decoration-tn-blue;
   }
   article a:hover {
-    @apply text-black dark:text-white;
+    @apply text-tn-day-text dark:text-tn-text;
     @apply decoration-2;
   }
 }
@@ -77,8 +77,7 @@ article {
 }
 
 .section-anchor-link {
-  /* yellow-500 = hsl(45, 93%, 47%) */
-  @apply absolute ml-[-1.5rem] items-center justify-center font-bold text-[color:hsl(45,25%,55%)] decoration-transparent opacity-25 transition-all hover:text-yellow-500 hover:opacity-100 hover:dark:text-yellow-500;
+  @apply absolute ml-[-1.5rem] items-center justify-center font-bold text-tn-day-muted dark:text-tn-muted decoration-transparent opacity-25 transition-all hover:text-tn-day-blue hover:opacity-100 hover:dark:text-tn-purple;
 }
 
 .section-anchor-link::after {
@@ -107,4 +106,36 @@ article {
 .table-of-contents-list li {
   font-size: var(--toc-font-size, 0.875rem);
   line-height: var(--toc-line-height, 1.25rem);
+}
+
+article {
+  --tw-prose-body: #1e2a4a;
+  --tw-prose-headings: #1e2a4a;
+  --tw-prose-bold: #1e2a4a;
+  --tw-prose-links: #3d5cbf;
+  --tw-prose-code: #005f7a;
+  --tw-prose-quotes: #4a5280;
+  --tw-prose-quote-borders: #c4c8da;
+  --tw-prose-counters: #4a5280;
+  --tw-prose-bullets: #c4c8da;
+  --tw-prose-hr: #c4c8da;
+  --tw-prose-captions: #4a5280;
+  --tw-prose-th-borders: #c4c8da;
+  --tw-prose-td-borders: #c4c8da;
+}
+
+.dark article {
+  --tw-prose-body: #c0caf5;
+  --tw-prose-headings: #c0caf5;
+  --tw-prose-bold: #c0caf5;
+  --tw-prose-links: #7aa2f7;
+  --tw-prose-code: #73daca;
+  --tw-prose-quotes: #a9b1d6;
+  --tw-prose-quote-borders: #3b4261;
+  --tw-prose-counters: #565f89;
+  --tw-prose-bullets: #3b4261;
+  --tw-prose-hr: #3b4261;
+  --tw-prose-captions: #565f89;
+  --tw-prose-th-borders: #3b4261;
+  --tw-prose-td-borders: #292e42;
 }

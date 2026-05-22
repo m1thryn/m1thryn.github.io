@@ -58,7 +58,7 @@ const socials = project.data.socials ?? [];
           {readingTime(project.body ?? "")}
         </div>
       </div>
-      <h1 class="text-3xl font-semibold text-black dark:text-white">
+      <h1 class="text-3xl font-semibold text-tn-day-text dark:text-tn-text">
         {project.data.title}
       </h1>
 
@@ -67,7 +67,7 @@ const socials = project.data.socials ?? [];
           tags.map((tag) => (
             <Link
               href={`/projects/tags/${tag}`}
-              className="font-semibold text-gray-500 dark:text-gray-400"
+              className="font-semibold text-tn-day-muted dark:text-tn-muted"
             >
               #{tag}
             </Link>
@@ -92,7 +92,7 @@ const socials = project.data.socials ?? [];
               {socials.toSorted().map((social) => (
                 <Link
                   href={social}
-                  className="fill-black/75 dark:fill-white/75 hover:fill-black hover:dark:fill-white w-[1em]"
+                  className="fill-black/75 dark:fill-tn-text hover:fill-black dark:hover:fill-tn-text w-[1em]"
                   external
                   hideExternalIcon
                 >

@@ -34,7 +34,7 @@ const years = Object.keys(postsMap).sort((a, b) => parseInt(b) - parseInt(a));
 <Layout title={BLOG.TITLE} description={BLOG.DESCRIPTION} route="blog">
   <Container>
     <div class="space-y-10">
-      <h1 class="animate text-3xl font-semibold text-black dark:text-white">
+      <h1 class="animate text-3xl font-semibold text-tn-day-text dark:text-tn-text">
         Posts
       </h1>
 
@@ -43,7 +43,7 @@ const years = Object.keys(postsMap).sort((a, b) => parseInt(b) - parseInt(a));
           tags.map((tag) => (
             <Link
               href={`/blog/tags/${tag}`}
-              className="text-xl text-gray-500 dark:text-gray-400"
+              className="text-xl text-tn-day-muted dark:text-tn-muted"
             >
               #{tag}
             </Link>
@@ -55,7 +55,7 @@ const years = Object.keys(postsMap).sort((a, b) => parseInt(b) - parseInt(a));
         {
           years.map((year) => (
             <section class="animate space-y-4">
-              <div class="font-semibold text-black dark:text-white">{year}</div>
+              <div class="font-semibold text-tn-day-text dark:text-tn-text">{year}</div>
               <div>
                 <ul class="not-prose flex flex-col gap-4">
                   {postsMap[year].map((post) => (
