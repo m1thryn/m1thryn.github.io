@@ -1,6 +1,38 @@
+Project License
+===============
+
+This repository uses separate licenses:
+
+- Content: CC-BY-4.0
+- Source code: MIT
+
+Third-party dependencies, bundled fonts, and external assets remain under their
+own licenses.
+
+Content
+-------
+
+Unless otherwise noted, original content in this repository is licensed under
+the Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+License text: https://creativecommons.org/licenses/by/4.0/
+
+This includes original posts, project writeups, images, diagrams, and other
+media unless otherwise noted.
+
+Source Code
+-----------
+
+Unless otherwise noted, source code, scripts, configuration, and styles used to
+build and publish this site are licensed under the MIT License below.
+
+This project is derived from work by Drew Silcock and Astro Micro. The original
+MIT notice is preserved here.
+
 MIT License
 
 Copyright (c) 2024 Drew Silcock
+Copyright (c) 2026 Ian McKay
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
