@@ -20,8 +20,7 @@ const { title, description, imageUrl } = Astro.props;
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
-<meta http-equiv="X-Frame-Options" content="DENY" />
-<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
 <!-- Canonical URL -->
@@ -81,10 +80,7 @@ const { title, description, imageUrl } = Astro.props;
   crossorigin="anonymous"
 />
 
-<link
-  rel="stylesheet"
-  href="https://www.nerdfonts.com/assets/css/webfont.css"
-/>
+<link rel="stylesheet" href="/fonts/nerd-fonts.css" />
 
 <ClientRouter />
 

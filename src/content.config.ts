@@ -21,9 +21,9 @@ const blog = defineCollection({
 const projects = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects" }),
   schema: baseSchema.extend({
-    demoURL: z.string().optional(),
-    repoURL: z.string().optional(),
-    packageURL: z.string().optional(),
+    demoURL: z.string().url().optional(),
+    repoURL: z.string().url().optional(),
+    packageURL: z.string().url().optional(),
   }),
 });
 
