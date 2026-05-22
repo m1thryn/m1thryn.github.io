@@ -3,8 +3,12 @@
   "type": "module",
   "private": true,
   "version": "0.0.2",
+  "packageManager": "pnpm@11.2.2+sha512.36e6621fad506178936455e70247b8808ef4ec25797a9f437a93281a020484e2607f6a469a22e982987c3dbb8866e3071514ab10a4a1749e06edcd1ec118436f",
+  "engines": {
+    "node": ">=22.12",
+    "pnpm": ">=11 <12"
+  },
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "dev": "astro dev",
     "start": "astro dev",
     "format": "prettier --write .",
@@ -16,18 +20,18 @@
   },
   "dependencies": {
     "@astrojs/check": "0.9.9",
-    "@astrojs/mdx": "^5.0.4",
+    "@astrojs/mdx": "^5.0.6",
     "@astrojs/rss": "4.0.18",
     "@astrojs/sitemap": "3.7.2",
     "@astrojs/tailwind": "^6.0.2",
-    "@expressive-code/plugin-collapsible-sections": "^0.41.4",
-    "@expressive-code/plugin-line-numbers": "^0.41.4",
-    "@fontsource/geist-mono": "^5.2.7",
+    "@expressive-code/plugin-collapsible-sections": "^0.41.7",
+    "@expressive-code/plugin-line-numbers": "^0.41.7",
+    "@fontsource/geist-mono": "^5.2.8",
     "@fontsource/geist-sans": "^5.2.5",
-    "astro": "^6.3.1",
-    "astro-expressive-code": "^0.41.4",
+    "astro": "^6.3.6",
+    "astro-expressive-code": "^0.41.7",
     "astro-og-canvas": "^0.11.1",
-    "astro-pagefind": "^1.8.5",
+    "astro-pagefind": "^1.8.6",
     "canvaskit-wasm": "^0.40.0",
     "clsx": "^2.1.1",
     "rehype-autolink-headings": "^7.1.0",
@@ -35,27 +39,18 @@
     "rehype-slug": "^6.0.0",
     "remark-math": "^6.0.0",
     "sharp": "^0.34.5",
-    "tailwind-merge": "^2.6.0",
+    "tailwind-merge": "^2.6.1",
     "tailwindcss": "^3.4.19",
     "typescript": "^5.9.3",
     "zod": "^4.4.3"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp"
-    ],
-    "overrides": {
-      "yaml": "^2.8.4"
-    }
-  },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
-    "@types/node": "^25.0.0",
-    "pagefind": "^1.4.0",
-    "prettier": "^3.7.4",
+    "@types/node": "^25.9.1",
+    "pagefind": "^1.5.2",
+    "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-organize-imports": "^4.3.0",
-    "prettier-plugin-tailwindcss": "^0.7.2"
+    "prettier-plugin-tailwindcss": "^0.7.4"
   }
 }

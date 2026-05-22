@@ -49,15 +49,30 @@ pnpm build     # build to dist/
 pnpm preview   # preview the production build
 ```
 
+For code quality:
+
 ```shell
-pnpm run check # TypeScript / Astro type checking
-pnpm run lint  # check formatting
-pnpm format    # auto-format with Prettier
+pnpm run check   # TypeScript / Astro type checking
+pnpm run lint    # check formatting
+pnpm format      # auto-format with Prettier
 ```
+
+## Maintenance
+
+Use the devcontainer for dependency maintenance so Node and pnpm match CI. From inside the container:
+
+```shell
+corepack up                    # update pinned pnpm within the current major
+pnpm update                    # update dependencies within allowed ranges
+pnpm install --frozen-lockfile # verify install without changing the lockfile
+pnpm audit                     # check for known dependency vulnerabilities
+```
+
+After updating dependencies, run the normal validation commands from the local setup section.
 
 ## Project Structure
 
-```
+```text
 src/
 ├── components/      # Shared Astro/HTML components
 ├── content/

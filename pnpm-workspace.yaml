@@ -1,4 +1,10 @@
-onlyBuiltDependencies:
-  - better-sqlite3
-  - esbuild
-  - sharp
+minimumReleaseAge: 1440
+engineStrict: true
+
+allowBuilds:
+  better-sqlite3: true
+  esbuild: true
+  sharp: true
+
+overrides:
+  yaml: ^2.8.4
