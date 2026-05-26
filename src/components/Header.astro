@@ -1,7 +1,7 @@
 ---
-import Container from "@components/Container.astro";
-import Link from "@components/Link.astro";
-import { SITE } from "@consts";
+import Container from "@/components/Container.astro";
+import Link from "@/components/Link.astro";
+import { SITE } from "@/consts";
 ---
 
 <header id="nav-header" transition:persist>
@@ -14,7 +14,7 @@ import { SITE } from "@consts";
           <div class="relative text-lg font-bold">
             <span class="align-sub text-2xl">🔬</span>
             <span
-              class="underline decoration-tn-day-blue dark:decoration-tn-blue decoration-4 underline-offset-4 group-hover:decoration-[6px]"
+              class="underline decoration-tn-day-blue decoration-4 underline-offset-4 group-hover:decoration-[6px] dark:decoration-tn-blue"
             >
               {SITE.TITLE}
             </span>

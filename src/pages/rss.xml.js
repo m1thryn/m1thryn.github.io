@@ -1,6 +1,6 @@
+import { SITE } from "@/consts";
+import { shouldRenderPage } from "@/lib/utils";
 import rss from "@astrojs/rss";
-import { SITE } from "@consts";
-import { shouldRenderPage } from "@lib/utils";
 import { getCollection } from "astro:content";
 
 export async function GET(context) {

@@ -1,11 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "@layouts/Layout.astro";
-import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
-import BackToPrevious from "@components/BackToPrevious.astro";
-import { BLOG } from "@consts";
-import { shouldListPage, shouldRenderPage } from "@lib/utils";
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/Container.astro";
+import ArrowCard from "@/components/ArrowCard.astro";
+import BackToPrevious from "@/components/BackToPrevious.astro";
+import { BLOG } from "@/consts";
+import { shouldListPage, shouldRenderPage } from "@/lib/utils";
 
 type Props = {
   tag: string;
@@ -45,7 +45,9 @@ export async function getStaticPaths() {
     </div>
 
     <div class="mb-2 mt-10 space-y-10">
-      <h1 class="animate text-3xl font-semibold text-tn-day-text dark:text-tn-text">
+      <h1
+        class="animate text-3xl font-semibold text-tn-day-text dark:text-tn-text"
+      >
         Posts tagged with
         <span class="text-tn-day-muted dark:text-tn-muted">#{tag}</span>
       </h1>

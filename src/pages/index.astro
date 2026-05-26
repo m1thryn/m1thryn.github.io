@@ -1,11 +1,11 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Container from "@components/Container.astro";
-import { SITE, HOME } from "@consts";
-import { shouldListPage } from "@lib/utils";
-import ArrowCard from "@components/ArrowCard.astro";
-import Link from "@components/Link.astro";
-import Socials from "@components/Socials.astro";
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/Container.astro";
+import { SITE, HOME } from "@/consts";
+import { shouldListPage } from "@/lib/utils";
+import ArrowCard from "@/components/ArrowCard.astro";
+import Link from "@/components/Link.astro";
+import Socials from "@/components/Socials.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
@@ -48,7 +48,9 @@ const projects: CollectionEntry<"projects">[] = (
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap items-center justify-between gap-y-2">
-          <h2 class="font-semibold text-tn-day-text dark:text-tn-text">Latest posts</h2>
+          <h2 class="font-semibold text-tn-day-text dark:text-tn-text">
+            Latest posts
+          </h2>
           <Link href="/blog"> See all posts </Link>
         </div>
         <ul class="not-prose flex flex-col gap-4">
@@ -81,7 +83,9 @@ const projects: CollectionEntry<"projects">[] = (
       </section>
 
       <section class="animate space-y-4">
-        <h2 class="font-semibold text-tn-day-text dark:text-tn-text">Say hi 😎</h2>
+        <h2 class="font-semibold text-tn-day-text dark:text-tn-text">
+          Say hi 😎
+        </h2>
         <article>
           <p>
             If you want to get in touch with me about something or just to say

@@ -1,11 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "@layouts/Layout.astro";
-import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
-import Link from "@components/Link.astro";
-import { PROJECTS } from "@consts";
-import { shouldListPage } from "@lib/utils";
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/Container.astro";
+import ArrowCard from "@/components/ArrowCard.astro";
+import Link from "@/components/Link.astro";
+import { PROJECTS } from "@/consts";
+import { shouldListPage } from "@/lib/utils";
 
 const projects = (await getCollection("projects"))
   .filter(shouldListPage)
@@ -23,7 +23,9 @@ const tags = projects
 >
   <Container>
     <div class="space-y-10">
-      <h1 class="animate text-3xl font-semibold text-tn-day-text dark:text-tn-text">
+      <h1
+        class="animate text-3xl font-semibold text-tn-day-text dark:text-tn-text"
+      >
         Projects
       </h1>
 

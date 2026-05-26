@@ -1,20 +1,20 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
-import Layout from "@layouts/Layout.astro";
-import Container from "@components/Container.astro";
-import FormattedDate from "@components/FormattedDate.astro";
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/Container.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
 import {
   readingTime,
   shouldRenderPage,
   shouldListPage,
   iconForSocial,
-} from "@lib/utils";
-import BackToPrevious from "@components/BackToPrevious.astro";
-import PostNavigation from "@components/PostNavigation.astro";
-import TableOfContents from "@components/TableOfContents.astro";
-import Link from "@components/Link.astro";
-import Giscus from "@components/Giscus.astro";
-import FontSizeSelector from "@components/FontSizeSelector.astro";
+} from "@/lib/utils";
+import BackToPrevious from "@/components/BackToPrevious.astro";
+import PostNavigation from "@/components/PostNavigation.astro";
+import TableOfContents from "@/components/TableOfContents.astro";
+import Link from "@/components/Link.astro";
+import Giscus from "@/components/Giscus.astro";
+import FontSizeSelector from "@/components/FontSizeSelector.astro";
 
 export async function getStaticPaths() {
   // Draft posts are excluded, but archived posts are included - they're just not
@@ -72,7 +72,9 @@ const socials = post.data.socials ?? [];
           {readingTime(post.body ?? "")}
         </div>
       </div>
-      <h1 class="animate text-3xl font-semibold text-tn-day-text dark:text-tn-text">
+      <h1
+        class="animate text-3xl font-semibold text-tn-day-text dark:text-tn-text"
+      >
         {post.data.title}
       </h1>
 
