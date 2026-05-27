@@ -1,8 +1,8 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
+import tailwindcss from "@tailwindcss/vite";
 import expressiveCode from "astro-expressive-code";
 import pagefind from "astro-pagefind";
 import { defineConfig } from "astro/config";
@@ -10,26 +10,25 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import remarkMath from "remark-math";
-import defaultTheme from "tailwindcss/defaultTheme";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://m1thryn.github.io",
+
   // The order of integrations is important here.
   integrations: [
-    tailwind(),
     sitemap(),
     pagefind(),
     expressiveCode({
       plugins: [pluginLineNumbers(), pluginCollapsibleSections()],
       styleOverrides: {
-        codeFontFamily: ['"Ubuntu Mono"', ...defaultTheme.fontFamily.mono].join(
-          ", ",
-        ),
+        codeFontFamily:
+          '"Ubuntu Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
       },
     }),
     mdx(),
   ],
+
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [
@@ -54,5 +53,9 @@ export default defineConfig({
         dark: "catppuccin-frappe",
       },
     },
+  },
+
+  vite: {
+    plugins: [tailwindcss()],
   },
 });

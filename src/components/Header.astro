@@ -14,7 +14,7 @@ import { SITE } from "@/consts";
           <div class="relative text-lg font-bold">
             <span class="align-sub text-2xl">🔬</span>
             <span
-              class="underline decoration-tn-day-blue decoration-4 underline-offset-4 group-hover:decoration-[6px] dark:decoration-tn-blue"
+              class="decoration-tn-day-blue dark:decoration-tn-blue underline decoration-4 underline-offset-4 group-hover:decoration-[6px]"
             >
               {SITE.TITLE}
             </span>
@@ -25,7 +25,7 @@ import { SITE } from "@/consts";
           data-collapse-toggle="navbar-default"
           id="header-menu-button"
           type="button"
-          class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm hover:bg-tn-day-surface focus:outline-none focus:ring-2 focus:ring-tn-day-border dark:hover:bg-tn-surface dark:focus:ring-tn-border md:hidden"
+          class="hover:bg-tn-day-surface focus:ring-tn-day-border dark:hover:bg-tn-surface dark:focus:ring-tn-border inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm focus:ring-2 focus:outline-none md:hidden"
           aria-controls="navbar-default"
           aria-expanded="false"
         >
@@ -52,45 +52,45 @@ import { SITE } from "@/consts";
           hidden
         >
           <ul
-            class="mt-4 flex flex-col rounded-lg border border-tn-day-border bg-tn-day-surface p-4 font-medium dark:border-tn-border dark:bg-tn-bg md:mt-0 md:flex-row md:items-center md:space-x-1 md:border-0 md:bg-transparent md:p-0 md:dark:bg-transparent rtl:space-x-reverse"
+            class="border-tn-day-border bg-tn-day-surface dark:border-tn-border dark:bg-tn-bg mt-4 flex flex-col rounded-lg border p-4 font-medium md:mt-0 md:flex-row md:items-center md:space-x-1 md:border-0 md:bg-transparent md:p-0 rtl:space-x-reverse md:dark:bg-transparent"
           >
             <li>
               <Link
                 href="/"
-                className="block rounded px-3 py-2 hover:bg-tn-day-surface dark:hover:bg-tn-surface md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-tn-day-text md:dark:hover:bg-transparent md:dark:hover:text-tn-text"
+                className="hover:bg-tn-day-surface dark:hover:bg-tn-surface md:hover:text-tn-day-text md:dark:hover:text-tn-text block rounded px-3 py-2 md:border-0 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
               >
                 home
               </Link>
             </li>
-            <span class="hidden text-tn-day-muted dark:text-tn-muted md:inline"
+            <span class="text-tn-day-muted dark:text-tn-muted hidden md:inline"
               >/</span
             >
             <li>
               <Link
                 href="/blog"
-                className="block rounded px-3 py-2 hover:bg-tn-day-surface dark:hover:bg-tn-surface md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-tn-day-text md:dark:hover:bg-transparent md:dark:hover:text-tn-text"
+                className="hover:bg-tn-day-surface dark:hover:bg-tn-surface md:hover:text-tn-day-text md:dark:hover:text-tn-text block rounded px-3 py-2 md:border-0 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
               >
                 blog
               </Link>
             </li>
-            <span class="hidden text-tn-day-muted dark:text-tn-muted md:inline"
+            <span class="text-tn-day-muted dark:text-tn-muted hidden md:inline"
               >/</span
             >
             <li>
               <Link
                 href="/projects"
-                className="block rounded px-3 py-2 hover:bg-tn-day-surface dark:hover:bg-tn-surface md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-tn-day-text md:dark:hover:bg-transparent md:dark:hover:text-tn-text"
+                className="hover:bg-tn-day-surface dark:hover:bg-tn-surface md:hover:text-tn-day-text md:dark:hover:text-tn-text block rounded px-3 py-2 md:border-0 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
               >
                 projects
               </Link>
             </li>
-            <span class="hidden text-tn-day-muted dark:text-tn-muted md:inline"
+            <span class="text-tn-day-muted dark:text-tn-muted hidden md:inline"
               >/</span
             >
             <li>
               <Link
                 href="/about"
-                className="block rounded px-3 py-2 hover:bg-tn-day-surface dark:hover:bg-tn-surface md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-tn-day-text md:dark:hover:bg-transparent md:dark:hover:text-tn-text"
+                className="hover:bg-tn-day-surface dark:hover:bg-tn-surface md:hover:text-tn-day-text md:dark:hover:text-tn-text block rounded px-3 py-2 md:border-0 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
               >
                 about
               </Link>
@@ -99,7 +99,7 @@ import { SITE } from "@/consts";
               <button
                 id="magnifying-glass"
                 aria-label="Search"
-                class="mx-3 my-2 flex w-[calc(100%-1rem)] items-center rounded border border-tn-day-border bg-tn-day-surface px-3 py-2 text-xs transition-colors duration-300 ease-in-out hover:bg-tn-day-border hover:text-tn-day-text focus-visible:bg-tn-day-border focus-visible:text-tn-day-text dark:border-tn-border dark:bg-tn-bg-dark dark:hover:bg-tn-surface dark:hover:text-tn-text dark:focus-visible:bg-tn-surface dark:focus-visible:text-tn-text"
+                class="border-tn-day-border bg-tn-day-surface hover:bg-tn-day-border hover:text-tn-day-text focus-visible:bg-tn-day-border focus-visible:text-tn-day-text dark:border-tn-border dark:bg-tn-bg-dark dark:hover:bg-tn-surface dark:hover:text-tn-text dark:focus-visible:bg-tn-surface dark:focus-visible:text-tn-text mx-3 my-2 flex w-[calc(100%-1rem)] items-center rounded border px-3 py-2 text-xs transition-colors duration-300 ease-in-out"
               >
                 <svg
                   height="16"

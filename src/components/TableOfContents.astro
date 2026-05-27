@@ -29,7 +29,7 @@ function buildToc(headings: Heading[]) {
 
 <details
   open
-  class="animate rounded-lg border border-tn-day-border bg-tn-day-card shadow-sm dark:border-tn-border dark:bg-transparent dark:shadow-none"
+  class="animate border-tn-day-border bg-tn-day-card dark:border-tn-border rounded-lg border shadow-sm dark:bg-transparent dark:shadow-none"
 >
   <summary>Table of Contents</summary>
   <nav>
@@ -40,6 +40,8 @@ function buildToc(headings: Heading[]) {
 </details>
 
 <style>
+  @reference "../styles/global.css";
+
   summary {
     @apply cursor-pointer rounded-t-lg px-3 py-1.5 font-medium transition-colors;
   }

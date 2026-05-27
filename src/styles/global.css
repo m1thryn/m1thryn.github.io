@@ -1,6 +1,43 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans:
+    "Geist Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono:
+    "Ubuntu Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+
+  /* Dark (Tokyo Night) */
+  --color-tn-bg: #1a1b2e;
+  --color-tn-bg-dark: #16161e;
+  --color-tn-surface: #292e42;
+  --color-tn-border: #3b4261;
+  --color-tn-text: #c0caf5;
+  --color-tn-text-secondary: #a9b1d6;
+  --color-tn-muted: #565f89;
+  --color-tn-blue: #7aa2f7;
+  --color-tn-purple: #bb9af7;
+  --color-tn-teal: #73daca;
+  --color-tn-green: #9ece6a;
+  --color-tn-orange: #ff9e64;
+  --color-tn-red: #f7768e;
+  --color-tn-yellow: #e0af68;
+
+  /* Light (Day) */
+  --color-tn-day-bg: #e4e6f2;
+  --color-tn-day-card: #e8eafc;
+  --color-tn-day-surface: #d8dae8;
+  --color-tn-day-border: #c4c8da;
+  --color-tn-day-text: #1e2a4a;
+  --color-tn-day-muted: #4a5280;
+  --color-tn-day-blue: #3d5cbf;
+  --color-tn-day-purple: #9854f1;
+  --color-tn-day-teal: #005f7a;
+}
 
 @font-face {
   font-family: "Ubuntu Mono";
@@ -33,7 +70,7 @@ body {
 }
 
 header {
-  @apply fixed left-0 right-0 top-0 z-50 py-6;
+  @apply fixed top-0 right-0 left-0 z-50 py-6;
   @apply bg-tn-day-bg/80 dark:bg-tn-bg-dark/85;
   @apply saturate-200 backdrop-blur-sm;
 }
@@ -47,20 +84,20 @@ footer {
 }
 
 article {
-  @apply prose prose-neutral max-w-full dark:prose-invert prose-img:mx-auto prose-img:my-auto;
+  @apply prose prose-neutral dark:prose-invert prose-img:mx-auto prose-img:my-auto max-w-full;
   @apply prose-headings:font-semibold;
-  @apply prose-headings:text-tn-day-text prose-headings:dark:text-tn-text;
+  @apply prose-headings:text-tn-day-text;
+  @apply dark:prose-headings:text-tn-text;
 }
 
-@layer utilities {
-  article a {
-    @apply font-sans text-current underline underline-offset-[3px];
-    @apply decoration-tn-day-blue dark:decoration-tn-blue;
-  }
-  article a:hover {
-    @apply text-tn-day-text dark:text-tn-text;
-    @apply decoration-2;
-  }
+article a {
+  @apply font-sans text-current underline underline-offset-[3px];
+  @apply decoration-tn-day-blue dark:decoration-tn-blue;
+}
+
+article a:hover {
+  @apply text-tn-day-text dark:text-tn-text;
+  @apply decoration-2;
 }
 
 .animate {
@@ -77,7 +114,7 @@ article {
 }
 
 .section-anchor-link {
-  @apply absolute ml-[-1.5rem] items-center justify-center font-bold text-tn-day-muted decoration-transparent opacity-25 transition-all hover:text-tn-day-blue hover:opacity-100 dark:text-tn-muted hover:dark:text-tn-purple;
+  @apply text-tn-day-muted hover:text-tn-day-blue dark:text-tn-muted dark:hover:text-tn-purple absolute ml-[-1.5rem] items-center justify-center font-bold decoration-transparent opacity-25 transition-all hover:opacity-100;
 }
 
 .section-anchor-link::after {
@@ -109,33 +146,33 @@ article {
 }
 
 article {
-  --tw-prose-body: #1e2a4a;
-  --tw-prose-headings: #1e2a4a;
-  --tw-prose-bold: #1e2a4a;
-  --tw-prose-links: #3d5cbf;
-  --tw-prose-code: #005f7a;
-  --tw-prose-quotes: #4a5280;
-  --tw-prose-quote-borders: #c4c8da;
-  --tw-prose-counters: #4a5280;
-  --tw-prose-bullets: #c4c8da;
-  --tw-prose-hr: #c4c8da;
-  --tw-prose-captions: #4a5280;
-  --tw-prose-th-borders: #c4c8da;
-  --tw-prose-td-borders: #c4c8da;
+  --tw-prose-body: var(--color-tn-day-text);
+  --tw-prose-headings: var(--color-tn-day-text);
+  --tw-prose-bold: var(--color-tn-day-text);
+  --tw-prose-links: var(--color-tn-day-blue);
+  --tw-prose-code: var(--color-tn-day-teal);
+  --tw-prose-quotes: var(--color-tn-day-muted);
+  --tw-prose-quote-borders: var(--color-tn-day-border);
+  --tw-prose-counters: var(--color-tn-day-muted);
+  --tw-prose-bullets: var(--color-tn-day-border);
+  --tw-prose-hr: var(--color-tn-day-border);
+  --tw-prose-captions: var(--color-tn-day-muted);
+  --tw-prose-th-borders: var(--color-tn-day-border);
+  --tw-prose-td-borders: var(--color-tn-day-border);
 }
 
 .dark article {
-  --tw-prose-body: #c0caf5;
-  --tw-prose-headings: #c0caf5;
-  --tw-prose-bold: #c0caf5;
-  --tw-prose-links: #7aa2f7;
-  --tw-prose-code: #73daca;
-  --tw-prose-quotes: #a9b1d6;
-  --tw-prose-quote-borders: #3b4261;
-  --tw-prose-counters: #565f89;
-  --tw-prose-bullets: #3b4261;
-  --tw-prose-hr: #3b4261;
-  --tw-prose-captions: #565f89;
-  --tw-prose-th-borders: #3b4261;
-  --tw-prose-td-borders: #292e42;
+  --tw-prose-body: var(--color-tn-text);
+  --tw-prose-headings: var(--color-tn-text);
+  --tw-prose-bold: var(--color-tn-text);
+  --tw-prose-links: var(--color-tn-blue);
+  --tw-prose-code: var(--color-tn-teal);
+  --tw-prose-quotes: var(--color-tn-text-secondary);
+  --tw-prose-quote-borders: var(--color-tn-border);
+  --tw-prose-counters: var(--color-tn-muted);
+  --tw-prose-bullets: var(--color-tn-border);
+  --tw-prose-hr: var(--color-tn-border);
+  --tw-prose-captions: var(--color-tn-muted);
+  --tw-prose-th-borders: var(--color-tn-border);
+  --tw-prose-td-borders: var(--color-tn-surface);
 }
