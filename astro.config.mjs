@@ -20,6 +20,7 @@ export default defineConfig({
     sitemap(),
     pagefind(),
     expressiveCode({
+      themes: ["catppuccin-latte", "catppuccin-frappe"],
       plugins: [pluginLineNumbers(), pluginCollapsibleSections()],
       styleOverrides: {
         codeFontFamily:

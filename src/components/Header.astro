@@ -49,7 +49,6 @@ import { SITE } from "@/consts";
         <div
           class="hidden w-full md:block md:w-auto"
           id="navbar-default"
-          hidden
         >
           <ul
             class="border-tn-day-border bg-tn-day-surface dark:border-tn-border dark:bg-tn-bg mt-4 flex flex-col rounded-lg border p-4 font-medium md:mt-0 md:flex-row md:items-center md:space-x-1 md:border-0 md:bg-transparent md:p-0 rtl:space-x-reverse md:dark:bg-transparent"
@@ -148,17 +147,22 @@ import { SITE } from "@/consts";
 
       const expanded = menuButton.getAttribute("aria-expanded") === "true";
       menuButton.setAttribute("aria-expanded", String(!expanded));
-      menu.hidden = expanded;
       menu.classList.toggle("hidden");
     }
 
     menuButton.addEventListener("click", toggleMenu);
 
+    for (const link of menu.querySelectorAll("a")) {
+      link.addEventListener("click", () => {
+        if (!menu.classList.contains("hidden")) toggleMenu();
+      });
+    }
+
     const navHeader = document.getElementById("nav-header");
 
     // If user clicks outside the header, close the menu.
     document.addEventListener("click", (event) => {
-      if (menu.hidden || event.target === null || navHeader === null) {
+      if (menu.classList.contains("hidden") || event.target === null || navHeader === null) {
         return;
       }
 

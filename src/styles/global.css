@@ -27,16 +27,17 @@
   --color-tn-red: #f7768e;
   --color-tn-yellow: #e0af68;
 
-  /* Light (Day) */
-  --color-tn-day-bg: #e4e6f2;
-  --color-tn-day-card: #e8eafc;
-  --color-tn-day-surface: #d8dae8;
-  --color-tn-day-border: #c4c8da;
-  --color-tn-day-text: #1e2a4a;
-  --color-tn-day-muted: #4a5280;
+  /* Light (Tokyo City Night Drive) */
+  --color-tn-day-bg: #dadef4;
+  --color-tn-day-bg-dark: #9ba6d1;
+  --color-tn-day-card: #dadef4;
+  --color-tn-day-surface: #c4cce6;
+  --color-tn-day-border: #8590c5;
+  --color-tn-day-text: #1e2140;
+  --color-tn-day-muted: #4a52a0;
   --color-tn-day-blue: #3d5cbf;
-  --color-tn-day-purple: #9854f1;
-  --color-tn-day-teal: #005f7a;
+  --color-tn-day-purple: #c83070;
+  --color-tn-day-teal: #007a8a;
 }
 
 @font-face {
@@ -71,8 +72,8 @@ body {
 
 header {
   @apply fixed top-0 right-0 left-0 z-50 py-6;
-  @apply bg-tn-day-bg/80 dark:bg-tn-bg-dark/85;
-  @apply saturate-200 backdrop-blur-sm;
+  @apply bg-tn-day-bg-dark/85 dark:bg-tn-bg-dark/85;
+  @apply backdrop-blur-sm dark:saturate-200;
 }
 
 main {
